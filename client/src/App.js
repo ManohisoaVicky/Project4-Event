@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import "./App.css";
@@ -11,7 +11,15 @@ import ProfilePage from "../src/pages/ProfilePage/ProfilePage";
 import SignUpPage from "../src/pages/SignUpPage/SignUpPage";
 import UpdateEventPage from "../src/pages/UpdateEventPage/UpdateEventPage";
 
+import useUser from "./hooks/userUser";
+
 function App() {
+  const { refreshAuth } = useUser();
+
+  useEffect(() => {
+    refreshAuth();
+  });
+
   return (
     <div className="App">
       <header>
@@ -21,7 +29,7 @@ function App() {
         <Routes>
           <Route exact path="*" element={<Navigate to="/" />} />
           <Route exact path="/" element={<HomePage />} />
-          <Route exact path="signup" element={<SignUpPage />} />
+          <Route exact path="/signup" element={<SignUpPage />} />
           <Route exact path="/login" element={<LogInPage />} />
           <Route exact path="/profile/:userID" element={<ProfilePage />} />
           <Route exact path="/event/new" element={<NewEventPage />} />

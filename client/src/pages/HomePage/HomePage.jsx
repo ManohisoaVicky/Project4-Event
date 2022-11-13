@@ -4,7 +4,7 @@ import "./HomePage.css"
 
 function HomePage() {
   return (
-    <div>HomePage</div>
+    <div className='homepage-container'>HomePage</div>
   )
 }
 

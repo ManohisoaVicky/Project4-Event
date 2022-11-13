@@ -1,0 +1,10 @@
+.navBar-container {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0px 20px;
+}
+
+.auth-links a {
+    padding: 0px 10px;
+}
