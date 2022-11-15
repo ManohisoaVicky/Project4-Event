@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     refreshAuth();
-  });
+  }, []);
 
   return (
     <div className="App">
