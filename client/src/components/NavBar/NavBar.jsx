@@ -6,16 +6,20 @@ import "./NavBar.css"
 
 function NavBar() {
 
-  const { user } = useUser()
+  const { handleLogOut, user } = useUser()
 
   let nav = user ? (
     <>
     <NavLink to="" className="nav-logo">EVENT APP</NavLink>
+    <div className='logged-in-links'>
+      <NavLink to="" onClick={handleLogOut} >LOG OUT</NavLink>
+      <NavLink to="/login">{user.first_name}</NavLink>
+    </div>
     </>
   ): (
     <>
     <NavLink to="" className="nav-logo">EVENT APP</NavLink>
-    <div className='auth-links'>
+    <div className='logged-out-links'>
       <NavLink to="/signup">SIGN UP</NavLink>
       <NavLink to="/login">LOG IN</NavLink>
     </div>

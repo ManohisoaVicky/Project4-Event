@@ -1,3 +1,5 @@
+import jwt_decode from "jwt-decode";
+
 function setToken(token) {
   if (token) {
     localStorage.setItem("token", token);
@@ -20,7 +22,8 @@ function getToken() {
 
 function getUserFromToken() {
   const token = getToken();
-  return token ? JSON.parse(atob(token.split(".")[1])).user : null;
+  const decoded = jwt_decode(token);
+  return decoded;
 }
 
 function removeToken() {

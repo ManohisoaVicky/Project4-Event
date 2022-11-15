@@ -11,7 +11,7 @@ export default function useUser() {
     setState((state) => ({ ...state, user: freshUser }));
   };
 
-  const handleLogout = () => {
+  const handleLogOut = () => {
     userService.logout();
     setState({ ...state, user: null });
   };
@@ -28,7 +28,7 @@ export default function useUser() {
   return {
     user: state.user,
     handleSignupOrLogin,
-    handleLogout,
+    handleLogOut,
     refreshAuth,
   };
 }

@@ -5,6 +5,7 @@
     margin: 0px 20px;
 }
 
-.auth-links a {
+.logged-in-links a,
+.logged-out-links a {
     padding: 0px 10px;
 }

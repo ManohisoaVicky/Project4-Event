@@ -2,10 +2,11 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from django.contrib.auth import get_user_model
 from rest_framework.exceptions import PermissionDenied
-from .serializers import UserSerializer
 from rest_framework.response import Response
 import jwt
 from django.conf import settings
+from .serializers import UserSerializer
+from .models import CustomUser
 # from .forms import CustomUserCreationForm
 User = get_user_model()
 
@@ -35,5 +36,6 @@ class LoginView(APIView):
         if not user.check_password(password):
             raise PermissionDenied({'message': 'Invalid credentials'})
 
-        token = jwt.encode({'sub': user.id}, settings.SECRET_KEY, algorithm='HS256')
+        token = jwt.encode({'sub': user.id, 'first_name':user.first_name, 'last_name':user.last_name, 'email':user.email, 'bio':user.bio} , settings.SECRET_KEY, algorithm='HS256')
         return Response({'token': token, 'message': f'Welcome back {user.first_name}!'})
+
