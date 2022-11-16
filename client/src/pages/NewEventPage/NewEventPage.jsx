@@ -9,8 +9,8 @@ function NewEventPage() {
   const [event, setEvent] = useState({
     name: "",
     description: "",
-    date: null,
-    time: null,
+    date: undefined,
+    time: undefined,
     duration: ""
   })
 
@@ -20,6 +20,7 @@ function NewEventPage() {
       [e.target.name]: e.target.value
     });
   }
+
 
   return (
     <div>
@@ -58,7 +59,10 @@ function NewEventPage() {
         name="duration"
         handleChange={handleChange}
         label="Duration"
-        placeholder="Duration"
+        defaultOption=""
+        option1="30 mins"
+        option2="45mins"
+        option3="60mins"
         />
       </form>
     </div>
