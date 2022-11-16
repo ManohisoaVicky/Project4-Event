@@ -61,8 +61,8 @@ function NewEventPage() {
         label="Duration"
         defaultOption=""
         option1="30 mins"
-        option2="45mins"
-        option3="60mins"
+        option2="45 mins"
+        option3="60 mins"
         />
       </form>
     </div>
