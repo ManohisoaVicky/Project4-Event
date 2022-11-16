@@ -13,7 +13,7 @@ function NavBar() {
     <NavLink to="" className="nav-logo">EVENT APP</NavLink>
     <div className='logged-in-links'>
       <NavLink to="" onClick={handleLogOut} >LOG OUT</NavLink>
-      <NavLink to="/login">{user.first_name}</NavLink>
+      <NavLink to={`/profile/${user.sub}`}>{user.first_name}</NavLink>
     </div>
     </>
   ): (
