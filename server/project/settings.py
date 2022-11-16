@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     #1st party apps
     'users',
+    'events',
 ]
 
 MIDDLEWARE = [
