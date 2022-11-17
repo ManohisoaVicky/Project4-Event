@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import userService from '../../utils/userService'
+import { signup } from '../../utils/userService'
 import useUser from '../../hooks/userUser'
 
 import "./SignUpPage.css"
@@ -29,7 +29,7 @@ function SignUpPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await userService.signup(state)
+      await signup(state)
       handleSignupOrLogin()
       navigate('/')
     } catch (error) {

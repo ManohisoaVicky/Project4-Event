@@ -1,4 +1,4 @@
-import tokenService from "./tokenService";
+import { setToken, getUserFromToken, removeToken } from "./tokenService";
 
 const BASE_URL = "/api/users/";
 
@@ -12,15 +12,15 @@ function signup(user) {
       if (res.ok) return res.json();
       throw new Error("Email already taken!");
     })
-    .then(({ token }) => tokenService.setToken(token));
+    .then(({ token }) => setToken(token));
 }
 
 function getUser() {
-  return tokenService.getUserFromToken();
+  return getUserFromToken();
 }
 
 function logout() {
-  tokenService.removeToken();
+  removeToken();
 }
 
 function login(creds) {
@@ -33,14 +33,7 @@ function login(creds) {
       if (res.ok) return res.json();
       throw new Error("Bad Credentials!");
     })
-    .then(({ token }) => tokenService.setToken(token));
+    .then(({ token }) => setToken(token));
 }
 
-const exports = {
-  signup,
-  getUser,
-  logout,
-  login,
-};
-
-export default exports;
+export { signup, getUser, logout, login };

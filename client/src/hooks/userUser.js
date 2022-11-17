@@ -1,18 +1,18 @@
 import React from "react";
 import { UserContext } from "../context/userContext";
-import userService from "../utils/userService";
-import tokenService from "../utils/tokenService";
+import { logout, getUser } from "../utils/userService";
+import { getUserFromToken } from "../utils/tokenService";
 
 export default function useUser() {
   const [state, setState] = React.useContext(UserContext);
 
   const handleSignupOrLogin = () => {
-    const freshUser = userService.getUser();
+    const freshUser = getUser();
     setState((state) => ({ ...state, user: freshUser }));
   };
 
   const handleLogOut = () => {
-    userService.logout();
+    logout();
     setState({ ...state, user: null });
   };
 
@@ -20,7 +20,7 @@ export default function useUser() {
     if (typeof window == "undefined") return false;
 
     if (localStorage.getItem("token")) {
-      const user = tokenService.getUserFromToken();
+      const user = getUserFromToken();
       return setState({ ...state, user });
     } else return false;
   };

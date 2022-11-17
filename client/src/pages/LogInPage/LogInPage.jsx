@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './LogInPage.css';
-import userService from '../../utils/userService';
+import { login } from '../../utils/userService';
 import useUser from '../../hooks/userUser';
 
 function LoginPage() {
@@ -23,7 +23,7 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await userService.login(formState);
+      await login(formState);
       handleSignupOrLogin();
       navigate('/');
     } catch (err) {

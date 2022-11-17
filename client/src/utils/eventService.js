@@ -1,4 +1,4 @@
-import tokenService from "../utils/tokenService";
+import { getToken } from "../utils/tokenService";
 
 const BASE_URL = "/api/events/";
 
@@ -13,7 +13,7 @@ const getEvents = async () => {
 
 const createEvent = async (event) => {
   try {
-    const token = tokenService();
+    const token = getToken();
     let res = await fetch(BASE_URL, {
       method: "POST",
       headers: {
