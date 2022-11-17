@@ -48,4 +48,9 @@ class EventDetailUpdateDelete(APIView):
         events = Event.objects.all()
         serializer = EventSerializer(events, many=True)
         return JsonResponse(serializer.data, safe=False)
+
+
+# class EventCreate(generics.CreateAPIView):
+#     queryset = Event.objects.all()
+#     serializer_class = EventSerializer
         

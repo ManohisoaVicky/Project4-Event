@@ -16,16 +16,18 @@ class JWTAuthentication(BasicAuthentication):
         if not header.startswith('Bearer'):
             raise PermissionDenied({'message': 'Invalid authorization header!'})
 
-        token = header.replace('Bearer', '')
+        token = header.replace('Bearer ', '')
 
         try:
             payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
-            user = User.objects.get(pk=payload.get('sub'))
+            user = User.objects.get(pk=payload.get('id'))
 
         except jwt.exceptions.InvalidTokenError:
             raise PermissionDenied({'message':'Invalid token'})
 
         except User.DoesNotExist:
             raise PermissionDenied({'message':'User not found'})
+        except:
+            print("there was an error with the token")
 
         return (user, token)

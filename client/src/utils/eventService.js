@@ -17,9 +17,10 @@ const createEvent = async (event) => {
     let res = await fetch(BASE_URL, {
       method: "POST",
       headers: {
+        "Content-Type": "application/json; charset=UTF-8",
         Authorization: "Bearer " + token,
       },
-      body: event,
+      body: JSON.stringify(event),
     });
     return res.json();
   } catch (error) {
