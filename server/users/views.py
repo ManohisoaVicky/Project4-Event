@@ -26,7 +26,7 @@ class LoginView(APIView):
         try:
             return User.objects.get(email=email)
         except User.DoesNotExist:
-            raise PermissionDenied({'message': 'Invalid credentials 5'})
+            raise PermissionDenied({'message': 'Invalid credentials'})
 
     def post(self, request):
         email = request.data.get('email')
@@ -36,6 +36,6 @@ class LoginView(APIView):
         if not user.check_password(password):
             raise PermissionDenied({'message': 'Invalid credentials'})
 
-        token = jwt.encode({'sub': user.id, 'first_name':user.first_name, 'last_name':user.last_name, 'email':user.email, 'bio':user.bio} , settings.SECRET_KEY, algorithm='HS256')
+        token = jwt.encode({'id': user.id, 'first_name':user.first_name, 'last_name':user.last_name, 'email':user.email, 'bio':user.bio} , settings.SECRET_KEY, algorithm='HS256')
         return Response({'token': token, 'message': f'Welcome back {user.first_name}!'})
 

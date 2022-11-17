@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-import "../../components/FormElements/Input/Input"
 import Input from '../../components/FormElements/Input/Input'
+import { createEvent } from "../../utils/eventService"
 import "./NewEventPage.css"
 
 function NewEventPage() {
@@ -9,8 +9,8 @@ function NewEventPage() {
   const [event, setEvent] = useState({
     name: "",
     description: "",
-    date: undefined,
-    time: undefined,
+    date: "",
+    time: "",
     duration: ""
   })
 
@@ -21,10 +21,17 @@ function NewEventPage() {
     });
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    createEvent(event).then(res => {
+      console.log(res)
+    })
+  }
+
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Input 
         type="text"
         value={event.name}
@@ -64,6 +71,7 @@ function NewEventPage() {
         option2="45 mins"
         option3="60 mins"
         />
+        <button type="Submit">Submit</button>
       </form>
     </div>
   )
