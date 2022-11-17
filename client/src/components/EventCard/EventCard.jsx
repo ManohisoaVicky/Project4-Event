@@ -2,9 +2,12 @@ import React from 'react'
 
 import "./EventCard.css"
 
-function EventCard() {
+function EventCard(props) {
   return (
-    <div>EventCard</div>
+    <div className='event-card-container'>
+      <h3>{props.name}</h3>
+      <p>{props.description}</p>
+    </div>
   )
 }
 

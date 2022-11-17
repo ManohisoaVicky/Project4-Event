@@ -23,9 +23,7 @@ function NewEventPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    createEvent(event).then(res => {
-      console.log(res)
-    })
+    createEvent(event)
   }
 
 

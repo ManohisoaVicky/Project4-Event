@@ -24,13 +24,28 @@ class EventListCreate(APIView):
             description = request.data['description'],
             date = request.data['date'],
             time = request.data['time'],
-            duration = request.data['duration']
+            duration = request.data['duration'],
+            host = request.user.id
         )
         new_event.save()
         serializer = EventSerializer(new_event)
-        return Response(serializer.data)
+        return JsonResponse(serializer.data, safe=False)
 
 
-# class EventList(generics.ListCreateAPIView):
-#     queryset = Event.objects.all()
-#     serializer_class = EventSerializer
+class EventDetailUpdateDelete(APIView):
+
+    def get(self, request, pk):
+        event = Event.objects.get(id=pk)
+        serializer = EventSerializer(event, request.data)
+        if serializer.is_valid():
+            serializer.save()
+        return JsonResponse(serializer.data, safe=False)
+
+    def delete(self, request, pk):
+        event = Event.objects.get(id=pk)
+        event.delete()
+
+        events = Event.objects.all()
+        serializer = EventSerializer(events, many=True)
+        return JsonResponse(serializer.data, safe=False)
+        
