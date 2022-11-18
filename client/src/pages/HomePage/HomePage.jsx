@@ -20,6 +20,7 @@ function HomePage() {
         events.map((event) => {
           return <EventCard 
                   key={event.id} 
+                  eventID={event.id}
                   name={event.name} 
                   description={event.description}
                   date={event.date}
