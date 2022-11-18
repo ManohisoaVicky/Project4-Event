@@ -18,7 +18,12 @@ function HomePage() {
     <div className='homepage-container'>
       {events &&
         events.map((event) => {
-          return <EventCard key={event.id} name={event.name} description={event.description}/>
+          return <EventCard 
+                  key={event.id} 
+                  name={event.name} 
+                  description={event.description}
+                  date={event.date}
+                  />
         })
       }
     </div>
