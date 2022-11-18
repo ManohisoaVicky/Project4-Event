@@ -28,4 +28,13 @@ const createEvent = async (event) => {
   }
 };
 
-export { getEvents, createEvent };
+const getSingleEvent = async (eventID) => {
+  try {
+    let res = await fetch(BASE_URL + eventID);
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { getEvents, createEvent, getSingleEvent };

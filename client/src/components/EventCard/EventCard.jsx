@@ -9,7 +9,7 @@ function EventCard(props) {
   let formattedDate = format(new Date(props.date), 'MMMM dd, yyyy')
 
   return (
-    <Link to={`/event/detail/:${props.eventID}`}>
+    <Link to={`/event/detail/${props.eventID}`}>
       <div className='event-card-container'>
         <h3>{props.name}</h3>
         <p>{formattedDate}</p>
