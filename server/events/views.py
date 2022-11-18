@@ -25,7 +25,7 @@ class EventListCreate(APIView):
             date = request.data['date'],
             time = request.data['time'],
             duration = request.data['duration'],
-            host = request.user.id
+            host_id = request.user.id
         )
         new_event.save()
         serializer = EventSerializer(new_event)
