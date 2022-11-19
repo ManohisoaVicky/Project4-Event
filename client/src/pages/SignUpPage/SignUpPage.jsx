@@ -84,7 +84,7 @@ function SignUpPage() {
         autoComplete="on"
         />
         <Input 
-        type="password_confirmation"
+        type="password"
         name="password_confirmation"
         value={state.password_confirmation}
         handleChange={handleChange}

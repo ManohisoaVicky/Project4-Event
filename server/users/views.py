@@ -16,7 +16,8 @@ class RegisterView(APIView):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response({'message':'Registration successful'})
+            token = jwt.encode({'id': serializer.data['id'], 'first_name': request.data['first_name'], 'last_name': request.data['last_name'], 'email': request.data['email'], 'bio': serializer.data['bio']} , settings.SECRET_KEY, algorithm='HS256')
+            return Response({'token': token, 'message': f"Welcome {request.data['first_name']}!"})
         return Response(serializer.errors, status=422)
 
 
@@ -38,4 +39,3 @@ class LoginView(APIView):
 
         token = jwt.encode({'id': user.id, 'first_name':user.first_name, 'last_name':user.last_name, 'email':user.email, 'bio':user.bio} , settings.SECRET_KEY, algorithm='HS256')
         return Response({'token': token, 'message': f'Welcome back {user.first_name}!'})
-
