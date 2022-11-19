@@ -5,9 +5,11 @@ import "./Button.css"
 function Button(props) {
 
   let button = 
-  props.text === "DELETE" && (
+  props.text === "DELETE" ? (
     <button onClick={props.handleDelete} >{props.text}</button>
-  ) 
+  ) : props.text === "UPDATE" && (
+    <button onClick={props.toUpdatePage}>{props.text}</button>
+  )
 
   return (
     <div>

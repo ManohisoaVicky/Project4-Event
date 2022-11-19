@@ -39,6 +39,14 @@ class EventDetailUpdateDelete(APIView):
         serializer = EventSerializer(event)
         return JsonResponse(serializer.data, safe=False)
 
+    def put(self, request, pk):
+        event = Event.objects.get(id=pk)
+        serializer = EventSerializer(event, request.data)
+        if serializer.is_valid():
+            serializer.save()
+            event.save()
+        return JsonResponse(serializer.data)
+
     def delete(self, request, pk):
         event = Event.objects.get(id=pk)
         event.delete()

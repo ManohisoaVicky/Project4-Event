@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { getSingleEvent, deleteEvent } from '../../utils/eventService'
 import { getUser } from '../../utils/userService'
 
@@ -15,6 +15,8 @@ function EventDetailPage() {
 
   let eventID = useParams().eventID
 
+  let navigate = useNavigate()
+
   useEffect(() => {
     async function getEvent() {
       let res = await getSingleEvent(eventID)
@@ -25,6 +27,11 @@ function EventDetailPage() {
 
   const handleDelete = (e) => {
     deleteEvent(eventID)
+    navigate("/")
+  }
+
+  const toUpdatePage = (e) => {
+    navigate(`/event/edit/${eventID}`)
   }
 
   return (
@@ -34,7 +41,10 @@ function EventDetailPage() {
       }
       {
         (event && event.host === user.id) &&
+        <>
         <Button text="DELETE" handleDelete={handleDelete} />
+        <Button text="UPDATE" toUpdatePage={toUpdatePage} />
+        </>
       }
     </div>
   )
