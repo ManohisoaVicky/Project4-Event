@@ -18,7 +18,6 @@ class EventListCreate(APIView):
         return JsonResponse(serializer.data, safe=False)
 
     def post(self, request, *args, **kwargs):
-        print(f"this is the request {request}")
         new_event = Event.objects.create(
             name = request.data['name'],
             description = request.data['description'],

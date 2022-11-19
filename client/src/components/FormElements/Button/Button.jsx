@@ -7,8 +7,10 @@ function Button(props) {
   let button = 
   props.text === "DELETE" ? (
     <button onClick={props.handleDelete} >{props.text}</button>
-  ) : props.text === "UPDATE" && (
+  ) : props.text === "UPDATE" ? (
     <button onClick={props.toUpdatePage}>{props.text}</button>
+  ) : props.text === "SUBMIT" && (
+    <button type={props.type}>{props.text}</button>
   )
 
   return (

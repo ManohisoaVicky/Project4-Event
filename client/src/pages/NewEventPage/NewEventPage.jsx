@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import Button from '../../components/FormElements/Button/Button'
 import Input from '../../components/FormElements/Input/Input'
 import { createEvent } from "../../utils/eventService"
 import "./NewEventPage.css"
@@ -73,7 +74,7 @@ function NewEventPage() {
         option2="45 mins"
         option3="60 mins"
         />
-        <button type="Submit">Submit</button>
+        <Button type="Submit" text="SUBMIT" />
       </form>
     </div>
   )
