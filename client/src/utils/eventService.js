@@ -37,4 +37,18 @@ const getSingleEvent = async (eventID) => {
   }
 };
 
-export { getEvents, createEvent, getSingleEvent };
+const deleteEvent = async (eventID) => {
+  try {
+    const token = getToken();
+    let res = await fetch(BASE_URL + eventID, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+        Authorization: "Bearer " + token,
+      },
+    });
+    return res.status(200).json({ message: "Successfully deleted" });
+  } catch {}
+};
+
+export { getEvents, createEvent, getSingleEvent, deleteEvent };

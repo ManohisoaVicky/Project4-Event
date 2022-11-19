@@ -2,9 +2,17 @@ import React from 'react'
 
 import "./Button.css"
 
-function Button() {
+function Button(props) {
+
+  let button = 
+  props.text === "DELETE" && (
+    <button onClick={props.handleDelete} >{props.text}</button>
+  ) 
+
   return (
-    <div>Button</div>
+    <div>
+      {button}
+    </div>
   )
 }
 

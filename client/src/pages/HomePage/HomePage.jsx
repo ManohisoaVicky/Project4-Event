@@ -9,7 +9,8 @@ function HomePage() {
   useEffect(() => {
     async function getAllEvents() {
       const events = await getEvents()
-      setEvents(events)
+      const eventsReversed = events.reverse()
+      setEvents(eventsReversed)
     }
     getAllEvents();
   }, [])

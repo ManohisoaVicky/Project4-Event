@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import Input from '../../components/FormElements/Input/Input'
 import { createEvent } from "../../utils/eventService"
 import "./NewEventPage.css"
 
 function NewEventPage() {
+
+  let navigate = useNavigate()
 
   const [event, setEvent] = useState({
     name: "",
@@ -24,6 +27,7 @@ function NewEventPage() {
   const handleSubmit = (e) => {
     e.preventDefault()
     createEvent(event)
+    navigate("/")
   }
 
 
