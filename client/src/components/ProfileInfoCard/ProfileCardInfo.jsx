@@ -1,26 +1,30 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 import useUser from '../../hooks/userUser'
+
 import "./ProfileInfoCard.css"
 
 function ProfileCardInfo() {
 
   const { user } = useUser()
 
-  let card = user ? (
-    <h2>{user.first_name}</h2>
-  ) : (
-  <>
-  <h2>Hello</h2>
-  </>
-  )
-
   return (
-    <>
-    {card}
-    <Link to="/event/new/">NEW EVENT</Link>
-    </>
+    <div className='profile-card-container'>
+    {
+      user ? (
+        <>
+        <h2>{user.first_name} {user.last_name}</h2>
+        <p>{user.username}</p>
+        <p>{user.bio}</p>
+        <Link to={`/profile/edit/${user.id}`}>EDIT PROFILE</Link>
+        </>
+      ) : (
+      <>
+      <h2>Hello</h2>
+      </>
+      )
+    }
+    </div>
   )
 }
 

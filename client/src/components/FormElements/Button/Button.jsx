@@ -12,7 +12,6 @@ function Button(props) {
   ) : props.text === "SUBMIT" && (
     <button type={props.type}>{props.text}</button>
   )
-
   return (
     <div>
       {button}

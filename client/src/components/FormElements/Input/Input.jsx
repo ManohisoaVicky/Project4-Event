@@ -15,7 +15,7 @@ function Input(props) {
     className={props.name}
     />
   ) :
-   props.name === "description" ? (
+   props.name === "description" || props.name === "bio" ? (
     <textarea
     value={props.value}
     name={props.name}
@@ -51,8 +51,16 @@ function Input(props) {
       <option value={props.option2}>{props.option2}</option>
       <option value={props.option3}>{props.option3}</option>
     </select>
-  ) : <></>
-
+  ) : (props.name === "first_name" || props.name === "last_name" || props.name === "username") && (
+    <input 
+    type={props.type}
+    value={props.value}
+    name={props.name}
+    onChange={(e) => props.handleChange(e)}
+    className={props.name}
+    placeholder={props.placeholder}
+    />
+  )
 
   return (
     <div>

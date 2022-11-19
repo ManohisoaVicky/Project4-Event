@@ -10,6 +10,7 @@ import NewEventPage from "../src/pages/NewEventPage/NewEventPage";
 import ProfilePage from "../src/pages/ProfilePage/ProfilePage";
 import SignUpPage from "../src/pages/SignUpPage/SignUpPage";
 import UpdateEventPage from "../src/pages/UpdateEventPage/UpdateEventPage";
+import ProfileEditPage from "./pages/ProfileEditPage/ProfileEditPage";
 
 import useUser from "./hooks/userUser";
 
@@ -18,6 +19,7 @@ function App() {
 
   useEffect(() => {
     refreshAuth();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -31,6 +33,11 @@ function App() {
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/signup" element={<SignUpPage />} />
           <Route exact path="/login" element={<LogInPage />} />
+          <Route
+            exact
+            path="/profile/edit/:userID"
+            element={<ProfileEditPage />}
+          />
           <Route exact path="/profile/:userID" element={<ProfilePage />} />
           <Route exact path="/event/new" element={<NewEventPage />} />
           <Route
