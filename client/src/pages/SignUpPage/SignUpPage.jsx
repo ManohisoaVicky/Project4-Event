@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { signup } from '../../utils/userService'
 import useUser from '../../hooks/userUser'
 
+import Input from '../../components/FormElements/Input/Input'
 import "./SignUpPage.css"
 
 function SignUpPage() {
@@ -34,6 +35,7 @@ function SignUpPage() {
       navigate('/')
     } catch (error) {
       alert(error.message)
+      console.log(error.message)
     }
   }
 
@@ -45,36 +47,50 @@ function SignUpPage() {
     <div>
       <h2>SIGN UP</h2>
       <form onSubmit={handleSubmit} >
-        <div>
-          <div>
-            <input type="text" placeholder="Username" value={state.username} name="username" onChange={handleChange} />
-          </div>
-        </div>
-        <div>
-          <div>
-            <input type="text" placeholder="First Name" value={state.first_name} name="first_name" onChange={handleChange} />
-          </div>
-        </div>
-        <div>
-          <div>
-            <input type="text" placeholder="Last Name" value={state.last_name} name="last_name" onChange={handleChange} />
-          </div>
-        </div>
-        <div>
-          <div>
-            <input type="email" placeholder="Email" value={state.email} name="email" onChange={handleChange} />
-          </div>
-        </div>
-        <div>
-          <div>
-            <input type="password" placeholder="Password" value={state.password} name="password" onChange={handleChange} />
-          </div>
-        </div>
-        <div>
-          <div>
-            <input type="password" placeholder="Confirm Password" value={state.password_confirmation} name="password_confirmation" onChange={handleChange} />
-          </div>
-        </div>
+        <Input
+        type="text"
+        name="username"
+        value={state.username || ""}
+        handleChange={handleChange}
+        placeholder="Username"
+        />
+        <Input
+        type="text"
+        name="first_name"
+        value={state.first_name}
+        handleChange={handleChange}
+        placeholder="First Name"
+        />
+        <Input
+        type="text"
+        name="last_name"
+        value={state.last_name}
+        handleChange={handleChange}
+        placeholder="Last Name"
+        />
+        <Input 
+        type="email"
+        name="email"
+        value={state.email}
+        handleChange={handleChange}
+        placeholder="Email"
+        />
+        <Input 
+        type="password"
+        name="password"
+        value={state.password}
+        handleChange={handleChange}
+        placeholder="Password"
+        autoComplete="on"
+        />
+        <Input 
+        type="password_confirmation"
+        name="password_confirmation"
+        value={state.password_confirmation}
+        handleChange={handleChange}
+        placeholder="Confirm Password"
+        autoComplete="on"
+        />
         <div>
           <div>
             <button  disabled={isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
