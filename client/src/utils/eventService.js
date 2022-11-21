@@ -1,11 +1,10 @@
-import { json } from "react-router-dom";
 import { getToken } from "../utils/tokenService";
 
 const BASE_URL = "/api/events/";
 
-const getEvents = async () => {
+const getEvents = async (name) => {
   try {
-    let res = await fetch(BASE_URL);
+    let res = await fetch(BASE_URL + `?name=${name}`);
     return res.json();
   } catch (error) {
     console.log(error);

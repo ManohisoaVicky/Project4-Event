@@ -69,7 +69,7 @@ function Input(props) {
     onChange={(e) => props.handleChange(e)}
     placeholder={props.placeholder}
     />
-  ) : (props.name === "password" || props.name === "password_confirmation") && (
+  ) : (props.name === "password" || props.name === "password_confirmation") ? (
     <input 
     type={props.type}
     value={props.value}
@@ -77,6 +77,14 @@ function Input(props) {
     onChange={(e) => props.handleChange(e)}
     placeholder={props.placeholder}
     autoComplete={props.autoComplete}
+    />
+  ) : props.name === "search" && (
+    <input
+    type={props.type}
+    value={props.value}
+    name={props.name}
+    onChange={(e) => props.handleChange(e)}
+    placeholder={props.placeholder}
     />
   )
 

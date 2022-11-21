@@ -13,8 +13,13 @@ class EventListCreate(APIView):
 
     def get(self, request):
         events = Event.objects.all().order_by('-id')
+
+        name = request.query_params.get("name")
+
+        if name is not None or "":
+            events = events.filter(name__icontains=name)
+
         serializer = EventSerializer(events, many=True)
-        # return Response(serializer.data)
         return JsonResponse(serializer.data, safe=False)
 
     def post(self, request, *args, **kwargs):
