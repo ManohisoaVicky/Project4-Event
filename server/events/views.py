@@ -12,7 +12,7 @@ class EventListCreate(APIView):
     # permission_classes = 
 
     def get(self, request):
-        events = Event.objects.all()
+        events = Event.objects.all().order_by('-id')
         serializer = EventSerializer(events, many=True)
         # return Response(serializer.data)
         return JsonResponse(serializer.data, safe=False)
@@ -43,7 +43,6 @@ class EventDetailUpdateDelete(APIView):
         serializer = EventSerializer(event, request.data)
         if serializer.is_valid():
             serializer.save()
-            event.save()
         return JsonResponse(serializer.data)
 
     def delete(self, request, pk):
@@ -55,7 +54,3 @@ class EventDetailUpdateDelete(APIView):
         return JsonResponse(serializer.data, safe=False)
 
 
-# class EventCreate(generics.CreateAPIView):
-#     queryset = Event.objects.all()
-#     serializer_class = EventSerializer
-        

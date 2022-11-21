@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from rest_framework.views import APIView
 from django.contrib.auth import get_user_model
 from rest_framework.exceptions import PermissionDenied
@@ -39,3 +40,20 @@ class LoginView(APIView):
 
         token = jwt.encode({'id': user.id, 'first_name':user.first_name, 'last_name':user.last_name, 'email':user.email, 'bio':user.bio} , settings.SECRET_KEY, algorithm='HS256')
         return Response({'token': token, 'message': f'Welcome back {user.first_name}!'})
+
+class UserDetailUpdate(APIView):
+
+    def get(sef, request, pk):
+        user = User.objects.get(id=pk)
+        serializer = UserSerializer(user)
+        return JsonResponse(serializer.data, safe=False)
+
+    def put(self, request, pk):
+        user = User.objects.get(id=pk)
+        print(user)
+        serializer = UserSerializer(user, request.data)
+        if serializer.is_valid():
+            serializer.save()
+        return JsonResponse(serializer.data)
+
+

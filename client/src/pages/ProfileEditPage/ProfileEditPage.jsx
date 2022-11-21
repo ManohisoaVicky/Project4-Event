@@ -62,6 +62,7 @@ function ProfileEditPage() {
         name="bio"
         value={state.bio || ""}
         handleChange={handleChange}
+        label="Bio"
         />
       </form>
       }

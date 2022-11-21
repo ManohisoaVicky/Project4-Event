@@ -22,6 +22,7 @@ function Input(props) {
     onChange={(e) => props.handleChange(e)}
     rows={props.rows || 3}
     className={props.name}
+    label={props.label}
     />
   ) : props.name === "date" ? (
     <input
