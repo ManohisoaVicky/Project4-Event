@@ -17,6 +17,7 @@ function ProfileCardInfo() {
         <p>{user.username}</p>
         <p>{user.bio}</p>
         <Link to={`/profile/edit/${user.id}`}>EDIT PROFILE</Link>
+        <Link to="/event/new/">NEW EVENT</Link>
         </>
       ) : (
       <>

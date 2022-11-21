@@ -4,18 +4,21 @@ import './LogInPage.css';
 import { login } from '../../utils/userService';
 import useUser from '../../hooks/userUser';
 
+import Input from '../../components/FormElements/Input/Input';
+import "./LogInPage.css"
+
 function LoginPage() {
   const navigate = useNavigate()
   const { handleSignupOrLogin } = useUser()
 
-  const [formState, setFormState] = useState({
+  const [state, setState] = useState({
     email: '',
     password: ''
   });
 
   const handleChange = (e) => {
-    setFormState({
-      ...formState,
+    setState({
+      ...state,
       [e.target.name]: e.target.value
     });
   }
@@ -23,7 +26,7 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(formState);
+      await login(state);
       handleSignupOrLogin();
       navigate('/');
     } catch (err) {
@@ -35,16 +38,21 @@ function LoginPage() {
     <div>
       <h2>Log In</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <div>
-            <input type="email" placeholder="Email" value={formState.email} name="email" onChange={handleChange} />
-          </div>
-        </div>
-        <div>
-          <div>
-            <input type="password" placeholder="Password" value={formState.password} name="password" onChange={handleChange} />
-          </div>
-        </div>
+      <Input 
+        type="email"
+        name="email"
+        value={state.email}
+        handleChange={handleChange}
+        placeholder="Email"
+        />
+        <Input 
+        type="password"
+        name="password"
+        value={state.password}
+        handleChange={handleChange}
+        placeholder="Password"
+        autoComplete="on"
+        />
         <div>
           <div>
             <button>Log In</button>&nbsp;&nbsp;&nbsp;
