@@ -57,5 +57,13 @@ class EventDetailUpdateDelete(APIView):
         events = Event.objects.all()
         serializer = EventSerializer(events, many=True)
         return JsonResponse(serializer.data, safe=False)
+    
+    
+class AllUserEvents(APIView):
+
+    def get(self, request, pk):
+        events = Event.objects.filter(host_id=pk)
+        serializer = EventSerializer(events, many=True)
+        return JsonResponse(serializer.data, safe=False)
 
 

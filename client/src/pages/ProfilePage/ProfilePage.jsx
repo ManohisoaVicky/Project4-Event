@@ -22,6 +22,9 @@ function ProfilePage() {
   return (
     <>
     <ProfileCardInfo user={user} />
+    <div className='user-events-container'>
+      
+    </div>
     </>
   )
 }
