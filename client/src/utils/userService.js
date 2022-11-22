@@ -1,4 +1,9 @@
-import { setToken, getUserFromToken, removeToken } from "./tokenService";
+import {
+  setToken,
+  getUserFromToken,
+  removeToken,
+  getToken,
+} from "./tokenService";
 
 const BASE_URL = "/api/users/";
 
@@ -36,4 +41,30 @@ function login(creds) {
     .then(({ token }) => setToken(token));
 }
 
-export { signup, getUser, logout, login };
+async function myUserProfile(userID) {
+  try {
+    let res = await fetch(BASE_URL + userID + "/");
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function updateProfile(user, userID) {
+  try {
+    const token = getToken();
+    let res = await fetch(BASE_URL + userID + "/", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(user),
+    });
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export { signup, getUser, logout, login, updateProfile, myUserProfile };

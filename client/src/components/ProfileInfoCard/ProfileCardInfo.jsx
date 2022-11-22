@@ -1,12 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import useUser from '../../hooks/userUser'
 
 import "./ProfileInfoCard.css"
 
-function ProfileCardInfo() {
-
-  const { user } = useUser()
+function ProfileCardInfo({user}) {
 
   return (
     <div className='profile-card-container'>

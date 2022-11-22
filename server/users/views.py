@@ -6,7 +6,7 @@ from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
 import jwt
 from django.conf import settings
-from .serializers import UserSerializer, UserUpdateSerializer
+from .serializers import UserSerializer, MyUserSerializer
 from .models import CustomUser
 # from .forms import CustomUserCreationForm
 User = get_user_model()
@@ -50,7 +50,7 @@ class UserDetailUpdate(APIView):
 
     def patch(self, request, pk):
         user = User.objects.get(id=pk)
-        serializer = UserUpdateSerializer(user, request.data)
+        serializer = MyUserSerializer(user, request.data)
         if serializer.is_valid():
             serializer.save()
         return JsonResponse(serializer.data)

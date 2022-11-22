@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import useUser from '../../hooks/userUser' 
+import { useNavigate, useParams } from 'react-router-dom'
+import { updateProfile, myUserProfile } from '../../utils/userService'
 
+import Button from '../../components/FormElements/Button/Button'
 import Input from '../../components/FormElements/Input/Input'
 import "./ProfileEditPage.css"
 
@@ -8,20 +10,17 @@ function ProfileEditPage() {
 
   const [state, setState] = useState()
 
-  let { user } = useUser()
+  let userID = useParams().userID
+
+  let navigate = useNavigate()
 
   useEffect(() => {
-    setState(user)
-    function setUsername() {
-    if (state) {
-      if (!state.username) {
-        setState({...state, username: ""})
-      }
+    async function getUserInfo() {
+      const user = await myUserProfile(userID)
+      setState(user)
     }
-  }
-  setUsername()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user])
+    getUserInfo()
+  }, [userID])
 
   const handleChange = (e) => {
     setState((oldState) => ({
@@ -30,10 +29,20 @@ function ProfileEditPage() {
     }));
   }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      await updateProfile(state, state.id)
+      navigate(`/profile/${state.id}`)
+    } catch(error) {
+      alert(error.message)
+    }
+  }
+
   return (
     <div>
-      { (user && state) && 
-      <form>
+      { (state) && 
+      <form onSubmit={handleSubmit}>
         <Input
         type="text"
         label="First Name"
@@ -64,6 +73,7 @@ function ProfileEditPage() {
         handleChange={handleChange}
         label="Bio"
         />
+        <Button text="SUBMIT" />
       </form>
       }
     </div>
