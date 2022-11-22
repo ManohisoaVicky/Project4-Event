@@ -68,4 +68,20 @@ const updateEvent = async (event, eventID) => {
   }
 };
 
-export { getEvents, createEvent, getSingleEvent, deleteEvent, updateEvent };
+const getUserEvent = async (userID) => {
+  try {
+    let res = await fetch(BASE_URL + "user/" + userID + "/");
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export {
+  getEvents,
+  createEvent,
+  getSingleEvent,
+  deleteEvent,
+  updateEvent,
+  getUserEvent,
+};
