@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { updateProfile, myUserProfile } from '../../utils/userService'
+import useUser from "../../hooks/userUser"
 
 import Button from '../../components/FormElements/Button/Button'
 import Input from '../../components/FormElements/Input/Input'
@@ -8,14 +9,16 @@ import "./ProfileEditPage.css"
 
 function ProfileEditPage({state, setState}) {
 
+  const { user } = useUser()
+
   let userID = useParams().userID
 
   let navigate = useNavigate()
 
   useEffect(() => {
     async function getUserInfo() {
-      const user = await myUserProfile(userID)
-      setState(user)
+      const currentUser = await myUserProfile(userID)
+      setState(currentUser)
     }
     getUserInfo()
   }, [userID])

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { getSingleEvent, deleteEvent } from '../../utils/eventService'
 import { getUser } from '../../utils/userService'
 
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import Button from '../../components/FormElements/Button/Button'
 import EventDetailCard from '../../components/EventDetailCard/EventDetailCard'
 import "./EventDetailPage.css"
@@ -36,9 +37,9 @@ function EventDetailPage() {
 
   return (
     <div>
-      { event &&
+      { event ?
         <EventDetailCard name={event.name} description={event.description} date={event.date} time={event.time} duration={event.duration} />
-      }
+      : <ErrorMessage error="authorization-error" text="EVENT DOES NOT EXIST" />}
       {
         (event && user && event.host === user.id) &&
         <>

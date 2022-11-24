@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { createEvent } from "../../utils/eventService"
+import useUser from "../../hooks/userUser"
 
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import Button from '../../components/FormElements/Button/Button'
 import Input from '../../components/FormElements/Input/Input'
-import { createEvent } from "../../utils/eventService"
 import "./NewEventPage.css"
 
 function NewEventPage() {
+
+  const { user } = useUser()
 
   let navigate = useNavigate()
 
@@ -34,6 +38,7 @@ function NewEventPage() {
 
   return (
     <div>
+      {user ?
       <form onSubmit={handleSubmit}>
         <Input 
         type="text"
@@ -76,6 +81,7 @@ function NewEventPage() {
         />
         <Button type="Submit" text="SUBMIT" />
       </form>
+      : <ErrorMessage error="authorization-error" text="ONLY LOGGED IN USERS CAN CREATE EVENTS" />}
     </div>
   )
 }
