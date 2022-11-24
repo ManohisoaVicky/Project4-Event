@@ -22,8 +22,11 @@ function getToken() {
 
 function getUserFromToken() {
   const token = getToken();
-  const decoded = jwt_decode(token);
-  return decoded;
+  if (token) {
+    const decoded = jwt_decode(token);
+    return decoded;
+  }
+  return null;
 }
 
 function removeToken() {

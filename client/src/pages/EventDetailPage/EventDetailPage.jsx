@@ -40,7 +40,7 @@ function EventDetailPage() {
         <EventDetailCard name={event.name} description={event.description} date={event.date} time={event.time} duration={event.duration} />
       }
       {
-        (event && event.host === user.id) &&
+        (event && user && event.host === user.id) &&
         <>
         <Button text="DELETE" handleDelete={handleDelete} />
         <Button text="UPDATE" toUpdatePage={toUpdatePage} />
