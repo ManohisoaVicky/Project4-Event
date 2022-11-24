@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import "./App.css";
@@ -15,6 +15,8 @@ import ProfileEditPage from "./pages/ProfileEditPage/ProfileEditPage";
 import useUser from "./hooks/userUser";
 
 function App() {
+  const [state, setState] = useState();
+
   const { refreshAuth } = useUser();
 
   useEffect(() => {
@@ -25,7 +27,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <NavBar />
+        <NavBar state={state} setState={setState} />
       </header>
       <main>
         <Routes>
@@ -36,7 +38,7 @@ function App() {
           <Route
             exact
             path="/profile/edit/:userID"
-            element={<ProfileEditPage />}
+            element={<ProfileEditPage state={state} setState={setState} />}
           />
           <Route exact path="/profile/:userID" element={<ProfilePage />} />
           <Route exact path="/event/new" element={<NewEventPage />} />

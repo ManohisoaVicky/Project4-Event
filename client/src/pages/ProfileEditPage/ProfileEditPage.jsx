@@ -6,9 +6,7 @@ import Button from '../../components/FormElements/Button/Button'
 import Input from '../../components/FormElements/Input/Input'
 import "./ProfileEditPage.css"
 
-function ProfileEditPage() {
-
-  const [state, setState] = useState()
+function ProfileEditPage({state, setState}) {
 
   let userID = useParams().userID
 

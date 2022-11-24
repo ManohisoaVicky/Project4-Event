@@ -1,19 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+import { myUserProfile } from '../../utils/userService'
 import useUser from '../../hooks/userUser'
 
 import "./NavBar.css"
 
-function NavBar() {
+function NavBar({state, setState}) {
 
   const { handleLogOut, user } = useUser()
 
-  let nav = user ? (
+  useEffect(() => {
+    if (user) {
+    async function getUserInfo() {
+      const theUser = await myUserProfile(user.id)
+      setState(theUser)
+    }
+    getUserInfo()
+  }
+  }, [setState, user])
+
+  let nav = user && state ? (
     <>
     <NavLink to="" className="nav-logo">EVENT APP</NavLink>
     <div className='logged-in-links'>
       <NavLink to="" onClick={handleLogOut} >LOG OUT</NavLink>
-      <NavLink to={`/profile/${user.id}`}>{user.first_name}</NavLink>
+      <NavLink to={`/profile/${state.id}`}>{state.first_name}</NavLink>
     </div>
     </>
   ): (
