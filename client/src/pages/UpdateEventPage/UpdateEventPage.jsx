@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { getUser } from '../../utils/userService'
 import { getSingleEvent, updateEvent } from '../../utils/eventService'
+import useUser from '../../hooks/userUser'
 
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import Button from '../../components/FormElements/Button/Button'
 import Input from '../../components/FormElements/Input/Input'
 import "./UpdateEventPage.css"
@@ -10,6 +11,8 @@ import "./UpdateEventPage.css"
 function UpdateEventPage() {
 
   const [event, setEvent] = useState()
+
+  const { user } = useUser()
 
   let eventID = useParams().eventID
 
@@ -38,8 +41,9 @@ function UpdateEventPage() {
 
   return (
     <div>
-      {
-        event &&
+      { user ?
+        event ?
+        user.id === event.host ?
         <form onSubmit={handleSubmit} >
           <Input 
           type="text"
@@ -82,6 +86,9 @@ function UpdateEventPage() {
           />
           <Button type="SUBMIT" text="SUBMIT"/>
         </form> 
+        : <ErrorMessage error="authorization-error" text="UNAUTHORIZED ACTION" />
+        : <ErrorMessage error="authorization-error" text="EVENT DOES NOT EXIST" />
+        : <ErrorMessage error="authorization-error" text="YOU ARE NOT LOGGED IN" />
       }
     </div>
   )
