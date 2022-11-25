@@ -12,27 +12,36 @@ import "./ProfilePage.css"
 function ProfilePage() {
 
   const { user } = useUser()
+  
+  let userID = null
+
+  const paramID = parseInt(useParams().userID)
 
   const [currentUser, setCurrentUser] = useState()
   const [events, setEvents] = useState()
 
-  const userID = useParams().userID
+  if (user) {
+    userID = user.id
+  }
 
   useEffect(() => {
+    if (user) {
     async function getUserInfoAndEvents() {
-      const theUser = await myUserProfile(userID)
+      const theUser = await myUserProfile(paramID)
       setCurrentUser(theUser)
-      const events = await getUserEvent(userID)
+      const events = await getUserEvent(paramID)
       setEvents(events)
     }
     getUserInfoAndEvents()
-  }, [userID])
+  }
+  }, [userID, user, paramID])
 
   return (
     <>
-    { currentUser ?
+    { user ?
+      currentUser ?
     <>
-    <ProfileCardInfo user={currentUser} />
+    <ProfileCardInfo user={currentUser} userID={userID} paramID={paramID} />
     <div className='user-events-container'>
       <h2>My Events</h2>
       {
@@ -52,6 +61,7 @@ function ProfilePage() {
       }
     </div>
     </>
+    : <ErrorMessage error="authorization-error" text="USER DOES NOT EXIST" />
     : <ErrorMessage error="authorization-error" text="YOU ARE NOT LOGGED IN"/>}
     </>
   )
