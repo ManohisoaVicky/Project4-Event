@@ -43,7 +43,6 @@ function ProfilePage() {
     <>
     <ProfileCardInfo user={currentUser} userID={userID} paramID={paramID} />
     <div className='user-events-container'>
-      <h2>My Events</h2>
       {
         events &&
         events.length !== 0 ? (

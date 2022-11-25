@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { updateProfile, myUserProfile } from '../../utils/userService'
 import useUser from "../../hooks/userUser"
 
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import Button from '../../components/FormElements/Button/Button'
 import Input from '../../components/FormElements/Input/Input'
 import "./ProfileEditPage.css"
@@ -16,12 +17,14 @@ function ProfileEditPage({state, setState}) {
   let navigate = useNavigate()
 
   useEffect(() => {
+    if (user) {
     async function getUserInfo() {
-      const currentUser = await myUserProfile(userID)
+      const currentUser = await myUserProfile(user.id)
       setState(currentUser)
     }
     getUserInfo()
-  }, [userID])
+  }
+  }, [userID, setState, user])
 
   const handleChange = (e) => {
     setState((oldState) => ({
@@ -42,7 +45,9 @@ function ProfileEditPage({state, setState}) {
 
   return (
     <div>
-      { (state) && 
+      { user ?
+      user.id === parseInt(userID) ?
+      (state) && 
       <form onSubmit={handleSubmit}>
         <Input
         type="text"
@@ -76,6 +81,8 @@ function ProfileEditPage({state, setState}) {
         />
         <Button text="SUBMIT" />
       </form>
+      : <ErrorMessage error="authorization-error" text="UNAUTHORIZED ACTION"/>
+      : <ErrorMessage error="authorization-error" text="YOU ARE NOT LOGGED IN" />
       }
     </div>
   )
