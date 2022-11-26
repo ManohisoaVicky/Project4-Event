@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { signup } from '../../utils/userService'
 import useUser from '../../hooks/userUser'
+import { isEmpty, validateEmail, validatePassword } from '../../utils/validations'
 
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import Input from '../../components/FormElements/Input/Input'
@@ -27,11 +28,11 @@ function SignUpPage() {
   const [passTouched, setPassTouched] = useState(false)
   const [passConfTouched, setPassConfTouched] = useState(false)
 
-  const firstNameValid = state.first_name.trim()!== ""
-  const lastNameValid = state.last_name.trim()!== "" 
-  const emailValid = state.email.trim() !== "" && validateEmail(state.email)
-  const passValid = state.password.trim() !== "" && validatePassword(state.password)
-  const passConfValid = state.password.trim() !== "" && compare(state.password, state.password_confirmation)
+  const firstNameValid = isEmpty(state.first_name)
+  const lastNameValid = isEmpty(state.last_name) 
+  const emailValid = isEmpty(state.email) && validateEmail(state.email)
+  const passValid = isEmpty(state.password) && validatePassword(state.password)
+  const passConfValid = isEmpty(state.password_confirmation) && compare(state.password, state.password_confirmation)
 
   const firstNameInvalid = firstTouched && !firstNameValid
   const lastNameInvalid = lastTouched && !lastNameValid

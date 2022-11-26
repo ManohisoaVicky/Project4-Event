@@ -30,14 +30,12 @@ function UpdateEventPage() {
   }, [eventID])
   
   if (event) {
-    nameIsValid = event.name.trim() !== "" && event.name.length > 50
+    nameIsValid = event.name.trim() !== "" && event.name.length > 40
     descriptionIsValid = event.description.trim() !== "" && event.description.length > 250
     dateIsValid = event.date.trim() !== "" && isMatch(event.date, "yyyy-MM-dd")
-    timeIsValid = event.time.trim() 
+    timeIsValid = event.time.trim() !== ""
     durationIsValid = event.duration.trim() !== ""
   }
-
-
 
   const handleChange = (e) => {
     setEvent({

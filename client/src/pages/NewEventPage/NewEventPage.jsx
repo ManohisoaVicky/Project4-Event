@@ -29,7 +29,7 @@ function NewEventPage() {
   const [timeTouched, setTimeTouched] = useState(false)
   const [durationTouched, setDurationTouched] = useState(false)
 
-  const nameIsValid = event.name.trim() !== "" && event.name.length > 50
+  const nameIsValid = event.name.trim() !== "" && event.name.length > 40
   const descriptionIsValid = event.description.trim() !== "" && event.description.length > 250
   const dateIsValid = event.date.trim() !== "" && isMatch(event.date, "yyyy-MM-dd")
   const timeIsValid = event.time.trim() !== "" && validateTime(event.time)
