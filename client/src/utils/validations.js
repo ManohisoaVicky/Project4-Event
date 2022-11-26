@@ -16,4 +16,20 @@ function comparePassword(pass, passConf) {
   return pass === passConf;
 }
 
-export { isEmpty, validateEmail, validatePassword, comparePassword };
+function minLength(word, char) {
+  return word.length > char;
+}
+
+function validateTime(time) {
+  const timeReg = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
+  return time.match(timeReg);
+}
+
+export {
+  isEmpty,
+  validateEmail,
+  validatePassword,
+  comparePassword,
+  minLength,
+  validateTime,
+};

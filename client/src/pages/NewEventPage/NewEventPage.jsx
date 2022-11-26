@@ -3,6 +3,7 @@ import isMatch from 'date-fns/isMatch'
 import { useNavigate } from 'react-router-dom'
 import { createEvent } from "../../utils/eventService"
 import useUser from "../../hooks/userUser"
+import { isEmpty, minLength, validateTime } from '../../utils/validations'
 
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import Button from '../../components/FormElements/Button/Button'
@@ -29,22 +30,13 @@ function NewEventPage() {
   const [timeTouched, setTimeTouched] = useState(false)
   const [durationTouched, setDurationTouched] = useState(false)
 
-  const nameIsValid = event.name.trim() !== "" && event.name.length > 40
-  const descriptionIsValid = event.description.trim() !== "" && event.description.length > 250
-  const dateIsValid = event.date.trim() !== "" && isMatch(event.date, "yyyy-MM-dd")
-  const timeIsValid = event.time.trim() !== "" && validateTime(event.time)
-  const durationIsValid = event.duration.trim() !== ""
+  const durationIsValid = isEmpty(event.duration)
 
-  const nameIsInvalid = nameTouched && !nameIsValid
-  const descriptionIsInvalid = descriptionTouched && !descriptionIsValid
-  const dateIsInvalid = dateTouched && !dateIsValid
-  const timeIsInvalid = timeTouched && !timeIsValid
+  const nameIsInvalid = nameTouched && !(isEmpty(event.name) && minLength(event.name, 40))
+  const descriptionIsInvalid = descriptionTouched && !(isEmpty(event.description) && minLength(event.description, 250))
+  const dateIsInvalid = dateTouched && !(isEmpty(event.date) && isMatch(event.date, "yyyy-MM-dd"))
+  const timeIsInvalid = timeTouched && !(isEmpty(event.time) && validateTime(event.time))
   const durationIsInvalid = durationTouched && !durationIsValid
-
-  function validateTime (time) {
-    const timeReg = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/
-    return time.match(timeReg)
-  }
 
   const blurHandler = (e) => {
     if (e.target.name === "name") {

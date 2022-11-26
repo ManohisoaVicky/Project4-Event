@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import isMatch from 'date-fns/isMatch'
 import { getSingleEvent, updateEvent } from '../../utils/eventService'
 import useUser from '../../hooks/userUser'
+import { isEmpty, minLength } from '../../utils/validations'
 
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import Button from '../../components/FormElements/Button/Button'
@@ -30,11 +31,11 @@ function UpdateEventPage() {
   }, [eventID])
   
   if (event) {
-    nameIsValid = event.name.trim() !== "" && event.name.length > 40
-    descriptionIsValid = event.description.trim() !== "" && event.description.length > 250
-    dateIsValid = event.date.trim() !== "" && isMatch(event.date, "yyyy-MM-dd")
-    timeIsValid = event.time.trim() !== ""
-    durationIsValid = event.duration.trim() !== ""
+    nameIsValid = isEmpty(event.name) && minLength(event.name, 40)
+    descriptionIsValid = isEmpty(event.description) && minLength(event.description, 250)
+    dateIsValid = isEmpty(event.date) && isMatch(event.date, "yyyy-MM-dd")
+    timeIsValid = isEmpty(event.time)
+    durationIsValid = isEmpty(event.duration)
   }
 
   const handleChange = (e) => {
