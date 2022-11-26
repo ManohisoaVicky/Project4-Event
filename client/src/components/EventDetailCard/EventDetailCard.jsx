@@ -8,9 +8,9 @@ function EventDetailCard(props) {
   return (
     <div>
       <h2>{props.name}</h2>
-      <p>{formattedDate}</p>
+      <p>{props.date}</p>
       <p>{props.description}</p>
-      <p>{props.time}</p>
+      <p>{formattedDate}</p>
       <p>{props.duration}</p>
     </div>
   )

@@ -31,7 +31,11 @@ const createEvent = async (event) => {
 const getSingleEvent = async (eventID) => {
   try {
     let res = await fetch(BASE_URL + eventID + "/");
-    return res.json();
+    if (res.status === 404) {
+      return null;
+    } else {
+      return res.json();
+    }
   } catch (error) {
     console.log(error);
   }

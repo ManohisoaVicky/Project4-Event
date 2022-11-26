@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.exceptions import PermissionDenied
 from rest_framework import generics
 
 from .models import Event
@@ -39,9 +40,12 @@ class EventListCreate(APIView):
 class EventDetailUpdateDelete(APIView):
 
     def get(self, request, pk):
-        event = Event.objects.get(id=pk)
-        serializer = EventSerializer(event)
-        return JsonResponse(serializer.data, safe=False)
+        try:
+            event = Event.objects.get(id=pk)
+            serializer = EventSerializer(event)
+            return JsonResponse(serializer.data, safe=False)
+        except Event.DoesNotExist:
+            raise Http404('Event does not exist')
 
     def put(self, request, pk):
         event = Event.objects.get(id=pk)

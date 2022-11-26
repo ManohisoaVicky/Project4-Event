@@ -56,7 +56,7 @@ function ProfilePage() {
                   />
         }))
       :
-      <p>You Have No Events</p>
+      <p>No Events</p>
       }
     </div>
     </>
