@@ -11,6 +11,7 @@ function Input(props) {
     value={props.value}
     name={props.name}
     onChange={(e) => props.handleChange(e)}
+    onBlur={(e) => props.blurHandler(e)}
     placeholder={props.placeholder}
     className={props.name}
     label={props.label}
@@ -21,6 +22,7 @@ function Input(props) {
     value={props.value}
     name={props.name}
     onChange={(e) => props.handleChange(e)}
+    onBlur={(e) => props.blurHandler(e)}
     rows={props.rows || 3}
     className={props.name}
     label={props.label}
@@ -31,6 +33,7 @@ function Input(props) {
     value={props.value}
     name={props.name}
     onChange={(e) => props.handleChange(e)}
+    onBlur={(e) => props.blurHandler(e)}
     className={props.name}
     />
   ) : props.name === "time" ? (
@@ -39,6 +42,7 @@ function Input(props) {
     value={props.value}
     name={props.name}
     onChange={(e) => props.handleChange(e)}
+    onBlur={(e) => props.blurHandler(e)}
     className={props.name}
     />
   ) : props.name === "duration" ? (
@@ -46,6 +50,7 @@ function Input(props) {
     value={props.value}
     name={props.name}
     onChange={(e) => props.handleChange(e)}
+    onBlur={(e) => props.blurHandler(e)}
     className={props.name}
     >
       <option value={props.defaultOption} defaultValue={props.defaultOption}></option>

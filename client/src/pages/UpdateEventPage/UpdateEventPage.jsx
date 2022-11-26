@@ -36,7 +36,7 @@ function UpdateEventPage() {
   const handleSubmit = (e) => {
     e.preventDefault()
     updateEvent(event, eventID)
-    navigate("/")
+    navigate(`/event/detail/${eventID}`)
   }
 
   return (
