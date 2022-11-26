@@ -35,9 +35,9 @@ function LoginPage() {
   }
 
   return (
-    <div>
+    <div className='authentication-form-container'>
       <h2>Log In</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='authentication-form'>
       <Input 
         type="email"
         name="email"

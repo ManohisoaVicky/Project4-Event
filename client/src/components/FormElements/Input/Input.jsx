@@ -64,6 +64,7 @@ function Input(props) {
     value={props.value}
     name={props.name}
     onChange={(e) => props.handleChange(e)}
+    onBlur={props.blurHandler}
     className={props.name}
     placeholder={props.placeholder}
     />
@@ -73,6 +74,7 @@ function Input(props) {
     value={props.value}
     name={props.name}
     onChange={(e) => props.handleChange(e)}
+    onBlur={props.blurHandler}
     placeholder={props.placeholder}
     />
   ) : (props.name === "password" || props.name === "password_confirmation") ? (
@@ -81,6 +83,7 @@ function Input(props) {
     value={props.value}
     name={props.name}
     onChange={(e) => props.handleChange(e)}
+    onBlur={props.blurHandler}
     placeholder={props.placeholder}
     autoComplete={props.autoComplete}
     />
