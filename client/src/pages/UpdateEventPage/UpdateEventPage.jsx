@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import isMatch from 'date-fns/isMatch'
 import { getSingleEvent, updateEvent } from '../../utils/eventService'
 import useUser from '../../hooks/userUser'
 
@@ -14,6 +15,8 @@ function UpdateEventPage() {
 
   const { user } = useUser()
 
+  let nameIsValid, descriptionIsValid, dateIsValid, timeIsValid, durationIsValid = null
+
   let eventID = useParams().eventID
 
   let navigate = useNavigate()
@@ -25,6 +28,21 @@ function UpdateEventPage() {
     }
     getEvent()
   }, [eventID])
+
+  function validateTime (time) {
+    const timeReg = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/
+    return time.match(timeReg)
+  }
+  
+  if (event) {
+    nameIsValid = event.name.trim() !== "" && event.name.length > 50
+    descriptionIsValid = event.description.trim() !== "" && event.description.length > 250
+    dateIsValid = event.date.trim() !== "" && isMatch(event.date, "yyyy-MM-dd")
+    timeIsValid = event.time.trim() 
+    durationIsValid = event.duration.trim() !== ""
+  }
+
+
 
   const handleChange = (e) => {
     setEvent({
@@ -53,12 +71,14 @@ function UpdateEventPage() {
           label="Name"
           placeholder="Name" 
           />
+          {!nameIsValid && <ErrorMessage error="input-validation-error" text="Please provide a valid event name."/>}
           <Input
           value={event.description}
           name="description"
           handleChange={handleChange}
           label="Description"
           />
+          {!descriptionIsValid && <ErrorMessage error="input-validation-error" text="Please provide a valid event description."/> }
           <Input 
           type="date"
           value={event.date}
@@ -66,6 +86,7 @@ function UpdateEventPage() {
           handleChange={handleChange}
           label="Date"
           />
+          {!dateIsValid && <ErrorMessage error="input-validation-error" text="Please provide a valid date." />}
           <Input 
           type="time"
           value={event.time}
@@ -73,6 +94,7 @@ function UpdateEventPage() {
           handleChange={handleChange}
           label="Time"
           />
+          {!timeIsValid && <ErrorMessage error="input-validation-error" text="Please provide a valid time." />}
           <Input 
           type="text"
           value={event.duration}
@@ -84,6 +106,7 @@ function UpdateEventPage() {
           option2="45 mins"
           option3="60 mins"
           />
+          {!durationIsValid && <ErrorMessage error="input-validation-error" text="Please provide a valid duration." />}
           <Button type="SUBMIT" text="SUBMIT"/>
         </form> 
         : <ErrorMessage error="authorization-error" text="UNAUTHORIZED ACTION" />
