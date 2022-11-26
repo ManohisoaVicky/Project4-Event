@@ -12,4 +12,8 @@ function validatePassword(input) {
   return input.match(validRegex);
 }
 
-export { isEmpty, validateEmail, validatePassword };
+function comparePassword(pass, passConf) {
+  return pass === passConf;
+}
+
+export { isEmpty, validateEmail, validatePassword, comparePassword };

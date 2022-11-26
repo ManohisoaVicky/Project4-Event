@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { signup } from '../../utils/userService'
 import useUser from '../../hooks/userUser'
-import { isEmpty, validateEmail, validatePassword } from '../../utils/validations'
+import { isEmpty, validateEmail, validatePassword, comparePassword } from '../../utils/validations'
 
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import Input from '../../components/FormElements/Input/Input'
@@ -28,31 +28,11 @@ function SignUpPage() {
   const [passTouched, setPassTouched] = useState(false)
   const [passConfTouched, setPassConfTouched] = useState(false)
 
-  const firstNameValid = isEmpty(state.first_name)
-  const lastNameValid = isEmpty(state.last_name) 
-  const emailValid = isEmpty(state.email) && validateEmail(state.email)
-  const passValid = isEmpty(state.password) && validatePassword(state.password)
-  const passConfValid = isEmpty(state.password_confirmation) && compare(state.password, state.password_confirmation)
-
-  const firstNameInvalid = firstTouched && !firstNameValid
-  const lastNameInvalid = lastTouched && !lastNameValid
-  const emailInvalid = emailTouched && !emailValid
-  const passInvalid = passTouched && !passValid
-  const passConfInvalid = passConfTouched && !passConfValid
-
-  function validateEmail(input) {
-    const validRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    return input.match(validRegex)
-  }
-
-  function validatePassword(input) {
-    const validRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
-    return input.match(validRegex)
-  }
-
-  function compare(pass, passConf) {
-    return pass === passConf
-  }
+  const firstNameInvalid = firstTouched && !isEmpty(state.first_name)
+  const lastNameInvalid = lastTouched && !isEmpty(state.last_name) 
+  const emailInvalid = emailTouched && !(isEmpty(state.email) && validateEmail(state.email))
+  const passInvalid = passTouched && !(isEmpty(state.password) && validatePassword(state.password))
+  const passConfInvalid = passConfTouched && !(isEmpty(state.password_confirmation) && comparePassword(state.password, state.password_confirmation))
 
   const blurHandler = (e) => {
     if (e.target.name === "first_name") {
