@@ -1,0 +1,11 @@
+.custom-input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .custom-input-container > input {
+    border: 2px solid green;
+} */
+
+.name {
+}

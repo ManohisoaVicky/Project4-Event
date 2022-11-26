@@ -40,11 +40,11 @@ function UpdateEventPage() {
   }
 
   return (
-    <div>
+    <div className='event-form-container'>
       { user ?
         event ?
         user.id === event.host ?
-        <form onSubmit={handleSubmit} >
+        <form onSubmit={handleSubmit} className="event-form" >
           <Input 
           type="text"
           value={event.name}

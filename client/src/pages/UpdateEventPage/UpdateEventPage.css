@@ -1,0 +1,15 @@
+.event-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    
+    border: 2px solid red;
+    margin: 0 auto;
+}
+
+.event-form {
+    border: 2px solid blue;
+    height: 70%;
+    width: 50%;
+}

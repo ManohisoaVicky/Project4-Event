@@ -37,9 +37,9 @@ function NewEventPage() {
 
 
   return (
-    <div>
+    <div className='event-form-container'>
       {user ?
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="event-form" >
         <Input 
         type="text"
         value={event.name}

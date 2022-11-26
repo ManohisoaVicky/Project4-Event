@@ -13,6 +13,7 @@ function Input(props) {
     onChange={(e) => props.handleChange(e)}
     placeholder={props.placeholder}
     className={props.name}
+    label={props.label}
     />
   ) :
    props.name === "description" || props.name === "bio" ? (
@@ -89,8 +90,8 @@ function Input(props) {
   )
 
   return (
-    <div>
-      <label>{props.label}</label>
+    <div className='custom-input-container'>
+      {props.label && <label className='custom-input-label'>{props.label}</label>}
       {element}
     </div>
   )
