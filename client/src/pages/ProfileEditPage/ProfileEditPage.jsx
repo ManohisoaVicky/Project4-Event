@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { updateProfile, myUserProfile } from '../../utils/userService'
 import useUser from "../../hooks/userUser"
+import { isEmpty, minLength } from '../../utils/validations'
 
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import Button from '../../components/FormElements/Button/Button'
@@ -9,6 +10,8 @@ import Input from '../../components/FormElements/Input/Input'
 import "./ProfileEditPage.css"
 
 function ProfileEditPage({state, setState}) {
+
+  let firstInvalid, lastInvalid = null
 
   const { user } = useUser()
 
@@ -25,6 +28,11 @@ function ProfileEditPage({state, setState}) {
     getUserInfo()
   }
   }, [userID, setState, user])
+
+  if (state) {
+    firstInvalid =  !isEmpty(state.first_name)
+    lastInvalid = !isEmpty(state.last_name) 
+  }
 
   const handleChange = (e) => {
     setState((oldState) => ({
@@ -57,6 +65,7 @@ function ProfileEditPage({state, setState}) {
         handleChange={handleChange}
         placeholder="First Name"
         />
+        {firstInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid first name." /> }
         <Input
         type="text"
         label="Last Name"
@@ -65,6 +74,7 @@ function ProfileEditPage({state, setState}) {
         handleChange={handleChange}
         placeholder="Last Name"
         />
+        {lastInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid last name." /> }
         <Input
         type="text"
         label="Username"
