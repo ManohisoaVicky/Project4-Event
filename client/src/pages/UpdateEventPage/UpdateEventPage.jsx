@@ -51,6 +51,8 @@ function UpdateEventPage() {
     navigate(`/event/detail/${eventID}`)
   }
 
+  const formIsInvalid = !(nameIsValid && descriptionIsValid && dateIsValid && timeIsValid && durationIsValid)
+
   return (
     <div className='event-form-container'>
       { user ?
@@ -101,7 +103,7 @@ function UpdateEventPage() {
           option3="60 mins"
           />
           {!durationIsValid && <ErrorMessage error="input-validation-error" text="Please provide a valid duration." />}
-          <Button type="SUBMIT" text="SUBMIT"/>
+          <Button type="SUBMIT" text="SUBMIT" isDisabled={formIsInvalid} />
         </form> 
         : <ErrorMessage error="authorization-error" text="UNAUTHORIZED ACTION" />
         : <ErrorMessage error="authorization-error" text="EVENT DOES NOT EXIST" />

@@ -5,6 +5,7 @@ import useUser from '../../hooks/userUser';
 import { isEmpty, validateEmail, validatePassword } from '../../utils/validations';
 
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import Button from '../../components/FormElements/Button/Button';
 import Input from '../../components/FormElements/Input/Input';
 import "./LogInPage.css"
 
@@ -54,6 +55,8 @@ function LoginPage() {
     }
   }
 
+  const formIsValid = !(emailValid && passValid)
+
   return (
     <div className='authentication-form-container'>
       <h2>Log In</h2>
@@ -79,7 +82,7 @@ function LoginPage() {
         {passInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid password." /> }
         <div>
           <div>
-            <button>Log In</button>&nbsp;&nbsp;&nbsp;
+            <Button text="SUBMIT" isDisabled={formIsValid} />
             <Link to='/'>Cancel</Link>
           </div>
         </div>

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { updateProfile, myUserProfile } from '../../utils/userService'
 import useUser from "../../hooks/userUser"
-import { isEmpty, minLength } from '../../utils/validations'
+import { isEmpty} from '../../utils/validations'
 
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import Button from '../../components/FormElements/Button/Button'
@@ -11,7 +11,7 @@ import "./ProfileEditPage.css"
 
 function ProfileEditPage({state, setState}) {
 
-  let firstInvalid, lastInvalid = null
+  let firstInvalid, lastInvalid, formIsInvalid = null
 
   const { user } = useUser()
 
@@ -49,6 +49,10 @@ function ProfileEditPage({state, setState}) {
     } catch(error) {
       alert(error.message)
     }
+  }
+
+  if (state) {
+    formIsInvalid = !(state.first_name && state.last_name)
   }
 
   return (
@@ -89,7 +93,7 @@ function ProfileEditPage({state, setState}) {
         handleChange={handleChange}
         label="Bio"
         />
-        <Button text="SUBMIT" />
+        <Button text="SUBMIT" isDisabled={formIsInvalid} />
       </form>
       : <ErrorMessage error="authorization-error" text="UNAUTHORIZED ACTION"/>
       : <ErrorMessage error="authorization-error" text="YOU ARE NOT LOGGED IN" />

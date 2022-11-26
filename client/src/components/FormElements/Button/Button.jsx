@@ -10,7 +10,7 @@ function Button(props) {
   ) : props.text === "UPDATE" ? (
     <button onClick={props.toUpdatePage}>{props.text}</button>
   ) : props.text === "SUBMIT" && (
-    <button type={props.type}>{props.text}</button>
+    <button type={props.type} disabled={props.isDisabled} >{props.text}</button>
   )
   return (
     <div>

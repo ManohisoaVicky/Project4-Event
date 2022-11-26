@@ -30,13 +30,11 @@ function NewEventPage() {
   const [timeTouched, setTimeTouched] = useState(false)
   const [durationTouched, setDurationTouched] = useState(false)
 
-  const durationIsValid = isEmpty(event.duration)
-
   const nameIsInvalid = nameTouched && !(isEmpty(event.name) && minLength(event.name, 40))
   const descriptionIsInvalid = descriptionTouched && !(isEmpty(event.description) && minLength(event.description, 250))
   const dateIsInvalid = dateTouched && !(isEmpty(event.date) && isMatch(event.date, "yyyy-MM-dd"))
   const timeIsInvalid = timeTouched && !(isEmpty(event.time) && validateTime(event.time))
-  const durationIsInvalid = durationTouched && !durationIsValid
+  const durationIsInvalid = durationTouched && !isEmpty(event.duration)
 
   const blurHandler = (e) => {
     if (e.target.name === "name") {
@@ -69,6 +67,7 @@ function NewEventPage() {
     navigate("/")
   }
 
+  const formIsInvalid = !(event.name && event.description && event.date && event.time && event.duration)
 
   return (
     <div className='event-form-container'>
@@ -123,7 +122,7 @@ function NewEventPage() {
         option3="60 mins"
         />
         {durationIsInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid duration." /> }
-        <Button type="Submit" text="SUBMIT" />
+        <Button type="Submit" text="SUBMIT" isDisabled={formIsInvalid} />
       </form>
       : <ErrorMessage error="authorization-error" text="ONLY LOGGED IN USERS CAN CREATE EVENTS" />}
     </div>
