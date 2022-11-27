@@ -44,7 +44,11 @@ function login(creds) {
 async function myUserProfile(userID) {
   try {
     let res = await fetch(BASE_URL + userID + "/");
-    return res.json();
+    if (res.status === 404) {
+      return null;
+    } else {
+      return res.json();
+    }
   } catch (error) {
     console.log(error);
   }

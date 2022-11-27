@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from rest_framework.views import APIView
 from django.contrib.auth import get_user_model
 from rest_framework.exceptions import PermissionDenied
@@ -44,9 +44,12 @@ class LoginView(APIView):
 class UserDetailUpdate(APIView):
 
     def get(sef, request, pk):
-        user = User.objects.get(id=pk)
-        serializer = UserSerializer(user)
-        return JsonResponse(serializer.data, safe=False)
+        try:
+            user = User.objects.get(id=pk)
+            serializer = UserSerializer(user)
+            return JsonResponse(serializer.data, safe=False)
+        except:
+            raise Http404('User does not exist')
 
     def patch(self, request, pk):
         user = User.objects.get(id=pk)

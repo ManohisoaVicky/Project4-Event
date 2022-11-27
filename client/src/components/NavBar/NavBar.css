@@ -1,11 +1,40 @@
+:root {
+    --dark-blue: #548687;
+    --light-blue: #E6F4F1;
+    --aqua: #BEFCFD;
+    --orange: #FF8847;
+    --app-title: "Arimo";
+}
+
 .navBar-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
-    margin: 0px 20px;
+    background-color: var(--dark-blue);
+    height: 100%;
+    padding: 0px 20px;
+}
+
+.navBar-container a {
+    text-decoration: none;
+}
+
+.nav-logo {
+    font-family: var(--app-title);
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--orange);
+    letter-spacing: 2px;
+}
+
+#user-link {
+    color: var(--light-blue);
 }
 
 .logged-in-links a,
 .logged-out-links a {
     padding: 0px 10px;
+    color: var(--aqua);
 }
+
