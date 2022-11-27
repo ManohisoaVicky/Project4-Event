@@ -12,23 +12,3 @@
     flex-direction: column;
 }
 
-/* .custom-input-container > input {
-    border: 2px solid green;
-} */
-
-.search-container {
-    margin: 30px 50px;
-}
-
-.search {
-    width: 20%;
-    padding: 5px 0px 5px 10px;
-    border: 1px solid var(--dark-blue);
-    transition: width 0.7s ease-out;
-}
-
-.search:focus {
-    /* border: 3px solid var(--dark-blue); */
-    outline: 2px solid var(--dark-blue);
-    width: 100%;
-}

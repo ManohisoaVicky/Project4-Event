@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaSearch } from "react-icons/fa"
 
 import "./Input.css"
 
@@ -101,6 +102,7 @@ function Input(props) {
   return (
     <div className={`custom-input-container ${props.name}-container`}>
       {props.label && <label className='custom-input-label'>{props.label}</label>}
+      {props.name === "search" && <FaSearch className='search-icon'/>}
       {element}
     </div>
   )

@@ -1,2 +1,44 @@
-.homepage-container {
+:root {
+    --dark-blue: #548687;
+    --light-blue: #E6F4F1;
+    --aqua: #BEFCFD;
+    --orange: #FF8847;
+    --white: white;
+    --app-title: "Arimo";
+}
+
+.search-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: 20%;
+    border: 1px solid var(--dark-blue);
+    transition: width 0.7s ease-out;
+    margin: 30px 50px;
+}
+
+.search-container:focus-within {
+    outline: 2px solid var(--dark-blue);
+    width: 90%;
+}
+
+.search {
+    width: 100%;
+    padding: 5px 0px 5px 10px;
+    border: none;
+}
+
+.search:focus {
+    outline: none;
+}
+
+.search::placeholder {
+color: var(--dark-blue);
+
+}
+
+.search-icon {
+    padding: 0px 5px 0px 10px;
+    color: var(--dark-blue);
 }
