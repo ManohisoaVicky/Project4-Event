@@ -1,4 +1,4 @@
-.authentication-form-container {
+.login-form-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,11 +7,9 @@
     height: 100%;
 }
 
-.authentication-form {
+.login-form {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-around; */
-    /* border: 2px solid red; */
     height: 60%;
     width: 40%;
 }

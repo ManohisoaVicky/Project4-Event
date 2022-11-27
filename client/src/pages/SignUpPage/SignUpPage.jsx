@@ -5,6 +5,7 @@ import useUser from '../../hooks/userUser'
 import { isEmpty, validateEmail, validatePassword, comparePassword } from '../../utils/validations'
 
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
+import Button from '../../components/FormElements/Button/Button'
 import Input from '../../components/FormElements/Input/Input'
 import "./SignUpPage.css"
 
@@ -71,14 +72,16 @@ function SignUpPage() {
     }
   }
 
-  const isFormInvalid = () => {
-    return !(state.first_name && state.last_name && state.email && state.password === state.password_confirmation);
-  }
+  const formIsInvalid = !(state.first_name && 
+                         state.last_name && 
+                         (isEmpty(state.email) && validateEmail(state.email)) && 
+                         (isEmpty(state.password) && validatePassword(state.password)) &&
+                         (isEmpty(state.password_confirmation) && comparePassword(state.password, state.password_confirmation)))
 
   return (
-    <div className='authentication-form-container'>
+    <div className='signup-form-container'>
+      <form onSubmit={handleSubmit} className="signup-form">
       <h2>SIGN UP</h2>
-      <form onSubmit={handleSubmit} className="authentication-form">
         <Input
         type="text"
         name="username"
@@ -136,7 +139,7 @@ function SignUpPage() {
         {passConfInvalid && <ErrorMessage error="input-validation-error" text="The password and password confirmation do not match" /> }
         <div>
           <div>
-            <button  disabled={isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
+            <Button text="SUBMIT" type="Submit" isDisabled={formIsInvalid} />
             <Link to='/'>Cancel</Link>
           </div>
         </div>

@@ -58,9 +58,9 @@ function LoginPage() {
   const formIsValid = !(emailValid && passValid)
 
   return (
-    <div className='authentication-form-container'>
+    <div className='login-form-container'>
       <h2>Log In</h2>
-      <form onSubmit={handleSubmit} className='authentication-form'>
+      <form onSubmit={handleSubmit} className='login-form'>
       <Input 
         type="email"
         name="email"
@@ -82,7 +82,7 @@ function LoginPage() {
         {passInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid password." /> }
         <div>
           <div>
-            <Button text="SUBMIT" isDisabled={formIsValid} />
+            <Button text="SUBMIT" type="Submit" isDisabled={formIsValid} />
             <Link to='/'>Cancel</Link>
           </div>
         </div>
