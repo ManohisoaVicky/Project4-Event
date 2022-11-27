@@ -28,13 +28,15 @@ function HomePage() {
 
   return (
     <div className='homepage-container'>
+      <div>
       <Input
       type="text"
       name="search"
       value={search}
       handleChange={handleChange}
-      placeholder="Placeholder"
+      placeholder="Find event ..."
       />
+      </div>
       {events &&
         events.map((event) => {
           return <EventCard 

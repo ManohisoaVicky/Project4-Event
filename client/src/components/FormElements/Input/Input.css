@@ -1,3 +1,12 @@
+:root {
+    --dark-blue: #548687;
+    --light-blue: #E6F4F1;
+    --aqua: #BEFCFD;
+    --orange: #FF8847;
+    --white: white;
+    --app-title: "Arimo";
+}
+
 .custom-input-container {
     display: flex;
     flex-direction: column;
@@ -7,5 +16,19 @@
     border: 2px solid green;
 } */
 
-.name {
+.search-container {
+    margin: 30px 50px;
+}
+
+.search {
+    width: 20%;
+    padding: 5px 0px 5px 10px;
+    border: 1px solid var(--dark-blue);
+    transition: width 0.7s ease-out;
+}
+
+.search:focus {
+    /* border: 3px solid var(--dark-blue); */
+    outline: 2px solid var(--dark-blue);
+    width: 100%;
 }

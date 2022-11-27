@@ -3,6 +3,7 @@
     --light-blue: #E6F4F1;
     --aqua: #BEFCFD;
     --orange: #FF8847;
+    --white: white;
     --app-title: "Arimo";
 }
 
@@ -13,7 +14,7 @@
 
     background-color: var(--dark-blue);
     height: 100%;
-    padding: 0px 20px;
+    padding: 0px 50px;
 }
 
 .navBar-container a {
@@ -24,7 +25,7 @@
     font-family: var(--app-title);
     font-weight: bold;
     font-size: 20px;
-    color: var(--orange);
+    color: var(--white);
     letter-spacing: 2px;
 }
 
@@ -34,7 +35,7 @@
 
 .logged-in-links a,
 .logged-out-links a {
-    padding: 0px 10px;
-    color: var(--aqua);
+    padding: 0px 15px;
+    color: var(--white);
 }
 

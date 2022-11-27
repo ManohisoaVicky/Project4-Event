@@ -92,13 +92,14 @@ function Input(props) {
     type={props.type}
     value={props.value}
     name={props.name}
+    className={props.name}
     onChange={(e) => props.handleChange(e)}
     placeholder={props.placeholder}
     />
   )
 
   return (
-    <div className='custom-input-container'>
+    <div className={`custom-input-container ${props.name}-container`}>
       {props.label && <label className='custom-input-label'>{props.label}</label>}
       {element}
     </div>
