@@ -21,10 +21,11 @@
 .signup-form {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
 
-    box-shadow:
+    /* box-shadow:
     0px 0px 62.6px -18px rgba(0, 0, 0, 0.04),
-    0px 0px 500px -18px rgba(0, 0, 0, 0.08);
+    0px 0px 500px -18px rgba(0, 0, 0, 0.08); */
     border: 1px solid var(--dark-blue);
     padding: 0px 10px;
     height: 60%;

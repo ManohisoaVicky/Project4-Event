@@ -10,7 +10,7 @@ export default function ErrorMessage(props) {
             <p>{props.text}</p>
         </div>
     ) : props.error === "input-validation-error" && (
-      <p className='input-validation'>{props.text}</p>
+      <div className='input-validation'>{props.text}</div>
     )
 
   return (

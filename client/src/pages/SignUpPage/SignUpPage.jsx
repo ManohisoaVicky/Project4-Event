@@ -90,6 +90,7 @@ function SignUpPage() {
         blurHandler={blurHandler}
         placeholder="Username"
         />
+        <div>
         <Input
         type="text"
         name="first_name"
@@ -99,6 +100,8 @@ function SignUpPage() {
         placeholder="First Name"
         />
         {firstNameInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid first name." /> }
+        </div>
+        <div>
         <Input
         type="text"
         name="last_name"
@@ -108,6 +111,8 @@ function SignUpPage() {
         placeholder="Last Name"
         />
         {lastNameInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid last name." /> }
+        </div>
+        <div>
         <Input 
         type="email"
         name="email"
@@ -117,6 +122,8 @@ function SignUpPage() {
         placeholder="Email"
         />
         {emailInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid email." /> }
+        </div>
+        <div>
         <Input 
         type="password"
         name="password"
@@ -126,7 +133,9 @@ function SignUpPage() {
         placeholder="Password"
         autoComplete="on"
         />
-        {passInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid password. Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" /> }
+        {passInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid password. Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters." /> }
+        </div>
+        <div>
         <Input 
         type="password"
         name="password_confirmation"
@@ -136,7 +145,8 @@ function SignUpPage() {
         placeholder="Confirm Password"
         autoComplete="on"
         />
-        {passConfInvalid && <ErrorMessage error="input-validation-error" text="The password and password confirmation do not match" /> }
+        {passConfInvalid && <ErrorMessage error="input-validation-error" text="The password and password confirmation do not match." /> }
+        </div>
         <div className='signup-button-container'>
           <Button text="SUBMIT" type="Submit" isDisabled={formIsInvalid} />
           <Link to='/'><Button text="CANCEL"/></Link>

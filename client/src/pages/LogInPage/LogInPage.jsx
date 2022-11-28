@@ -59,8 +59,9 @@ function LoginPage() {
 
   return (
     <div className='login-form-container'>
-      <h2>Log In</h2>
       <form onSubmit={handleSubmit} className='login-form'>
+      <h2>Log In</h2>
+      <div>
       <Input 
         type="email"
         name="email"
@@ -70,6 +71,8 @@ function LoginPage() {
         placeholder="Email"
         />
         {emailInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid email." /> }
+        </div>
+        <div>
         <Input 
         type="password"
         name="password"
@@ -79,11 +82,12 @@ function LoginPage() {
         placeholder="Password"
         autoComplete="on"
         />
-        {passInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid password." /> }
+        {passInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid password. Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters." /> }
+        </div>
         <div>
-          <div>
+          <div className='login-button-container'>
             <Button text="SUBMIT" type="Submit" isDisabled={formIsValid} />
-            <Link to='/'>Cancel</Link>
+            <Link to='/'><Button text="CANCEL"/></Link>
           </div>
         </div>
       </form>
