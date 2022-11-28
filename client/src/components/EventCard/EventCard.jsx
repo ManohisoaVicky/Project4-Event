@@ -13,7 +13,10 @@ function EventCard(props) {
       <Link to={`/event/detail/${props.eventID}`}>
         <div>
           <h3>{props.name}</h3>
-          <p>{formattedDate}</p>
+          <div className='event-card-info'>
+            <p>{formattedDate}</p>
+            {props.host && <p>Host: <Link to={`/profile/${props.host.id}`} className="event-card-host">{props.host.first_name} {props.host.last_name}</Link></p>}
+          </div>
         </div>
     </Link>
     </div>

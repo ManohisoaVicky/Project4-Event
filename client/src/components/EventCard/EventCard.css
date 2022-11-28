@@ -1,3 +1,14 @@
+:root {
+    --dark-blue: #548687;
+    --light-blue: #E6F4F1;
+    --aqua: #BEFCFD;
+    --orange: #FF8847;
+    --white: white;
+    --app-title: "Arimo";
+    --app-headers: "Fira Sans";
+    --app-text: "Work Sans";
+}
+
 .event-card-container {
     margin: 50px 0px;
     padding: 10px;
@@ -17,4 +28,18 @@
 .event-card-container a {
     text-decoration: none;
     color: white;
+}
+
+.event-card-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.event-card-host {
+    font-style: italic;
+}
+
+.event-card-host:hover {
+    color: var(--orange);
 }
