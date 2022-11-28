@@ -56,14 +56,13 @@ function ProfileEditPage({state, setState}) {
   }
 
   return (
-    <div>
+    <div className='profile-edit-container'>
       { user ?
       user.id === parseInt(userID) ?
       (state) && 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="profile-edit-form">
         <Input
         type="text"
-        label="First Name"
         name="first_name"
         value={state.first_name}
         handleChange={handleChange}
@@ -72,7 +71,6 @@ function ProfileEditPage({state, setState}) {
         {firstInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid first name." /> }
         <Input
         type="text"
-        label="Last Name"
         name="last_name"
         value={state.last_name}
         handleChange={handleChange}
@@ -81,7 +79,6 @@ function ProfileEditPage({state, setState}) {
         {lastInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid last name." /> }
         <Input
         type="text"
-        label="Username"
         name="username"
         value={state.username || ""}
         handleChange={handleChange}
@@ -91,9 +88,13 @@ function ProfileEditPage({state, setState}) {
         name="bio"
         value={state.bio || ""}
         handleChange={handleChange}
-        label="Bio"
+        rows={5}
+        placeholder="Tell us about you"
         />
-        <Button text="SUBMIT" isDisabled={formIsInvalid} />
+        <div className='update-profile-btn-container'>
+          <Button text="SUBMIT" isDisabled={formIsInvalid} />
+          <Button text="CANCEL" clickHandler={() => navigate(-1)} />
+        </div>
       </form>
       : <ErrorMessage error="authorization-error" text="UNAUTHORIZED ACTION"/>
       : <ErrorMessage error="authorization-error" text="YOU ARE NOT LOGGED IN" />

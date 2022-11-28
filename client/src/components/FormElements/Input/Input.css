@@ -52,13 +52,15 @@ input {
     font-size: 20px;
 }
 
-.description::placeholder {
+.description::placeholder, 
+.bio::placeholder {
     color: var(--dark-blue);
     font-family: var(--app-text);
     font-size: 16px;
 }
 
-.description {
+.description, 
+.bio {
     border: 2px solid var(--light-blue);
     border-radius: 3px;
     outline: none;
@@ -67,7 +69,8 @@ input {
     line-height: 25px;
 }
 
-.description:focus {
+.description:focus, 
+.bio:focus {
     outline: 2px solid var(--dark-blue);   
 }
 
