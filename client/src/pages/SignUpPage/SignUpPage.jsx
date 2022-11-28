@@ -137,11 +137,9 @@ function SignUpPage() {
         autoComplete="on"
         />
         {passConfInvalid && <ErrorMessage error="input-validation-error" text="The password and password confirmation do not match" /> }
-        <div>
-          <div>
-            <Button text="SUBMIT" type="Submit" isDisabled={formIsInvalid} />
-            <Link to='/'>Cancel</Link>
-          </div>
+        <div className='signup-button-container'>
+          <Button text="SUBMIT" type="Submit" isDisabled={formIsInvalid} />
+          <Link to='/'><Button text="CANCEL"/></Link>
         </div>
       </form>
     </div>

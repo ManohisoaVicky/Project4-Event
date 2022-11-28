@@ -23,7 +23,7 @@ function NavBar({state, setState}) {
     <>
     <NavLink to="" className="nav-logo">EVENT APP</NavLink>
     <div className='logged-in-links'>
-      <NavLink to="" onClick={handleLogOut} >LOG OUT</NavLink>
+      <NavLink to="" onClick={handleLogOut} id="logout-link" >LOG OUT</NavLink>
       <NavLink to={`/profile/${state.id}`} id="user-link">{state.first_name}</NavLink>
     </div>
     </>
@@ -31,8 +31,8 @@ function NavBar({state, setState}) {
     <>
     <NavLink to="" className="nav-logo">EVENT APP</NavLink>
     <div className='logged-out-links'>
-      <NavLink to="/signup">SIGN UP</NavLink>
-      <NavLink to="/login">LOG IN</NavLink>
+      <NavLink to="/signup" id="signup-link">SIGN UP</NavLink>
+      <NavLink to="/login" id="login-link">LOG IN</NavLink>
     </div>
     </>
   )

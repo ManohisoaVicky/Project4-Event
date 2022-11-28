@@ -20,12 +20,12 @@
 .email, 
 .password, 
 .password_confirmation {
-    margin: 0px 0px 20px 0px;
+    margin: 0px 0px 40px 0px;
     border: none;
     border-bottom: 2px solid var(--light-blue);
     outline: none;
     color: var(--dark-blue);
-    font-size: 14px;
+    font-size: 16px;
     transition: 0.8s;
     font-family: var(--app-text);
 }
@@ -36,8 +36,6 @@
 .email:focus,
 .password:focus,
 .password_confirmation:focus {
-    font-size: 14px;
-    left: 0px;
     border-bottom: 2px solid var(--dark-blue);
 }
 

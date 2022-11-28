@@ -1,0 +1,98 @@
+:root {
+    --dark-blue: #548687;
+    --light-blue: #E6F4F1;
+    --aqua: #BEFCFD;
+    --orange: #FF8847;
+    --white: white;
+    --app-title: "Arimo";
+    --app-headers: "Fira Sans";
+    --app-text: "Work Sans";
+}
+
+.submit-btn {
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    z-index: 0;
+    background: #fff;
+    overflow: hidden;
+    border: 2px solid var(--dark-blue);
+    color: var(--dark-blue);
+}
+
+.submit-btn:hover {
+    color: #fff;
+}
+
+.submit-btn:hover:after {
+    width: 100%;
+}
+
+.submit-btn:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s ease;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: var(--dark-blue);
+}
+
+.disabled {
+    min-width: 130px;
+    height: 40px;
+    color: var(--dark-blue);
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: not-allowed;
+}
+
+.cancel-btn {
+    min-width: 130px;
+    height: 40px;
+    color: var(--orange);
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    z-index: 0;
+    background: var(--orange);
+    overflow: hidden;
+    border: 2px solid var(--white);
+    color: var(--white);
+}
+
+.cancel-btn:hover {
+    color: var(--orange);
+    border: 2px solid var(--orange);
+}
+
+.cancel-btn:hover:after {
+    width: 100%;
+}
+
+.cancel-btn:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s ease;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: var(--white);
+}
