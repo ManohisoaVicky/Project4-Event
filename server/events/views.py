@@ -6,7 +6,7 @@ from rest_framework.exceptions import PermissionDenied
 from rest_framework import generics
 
 from .models import Event
-from .serializers import EventSerializer
+from .serializers import EventSerializer, PopulatedEventSerializer
 # Create your views here.
 
 class EventListCreate(APIView):
@@ -20,7 +20,7 @@ class EventListCreate(APIView):
         if name is not None or "":
             events = events.filter(name__icontains=name)
 
-        serializer = EventSerializer(events, many=True)
+        serializer = PopulatedEventSerializer(events, many=True)
         return JsonResponse(serializer.data, safe=False)
 
     def post(self, request, *args, **kwargs):
