@@ -1,3 +1,14 @@
+:root {
+    --dark-blue: #548687;
+    --light-blue: #E6F4F1;
+    --aqua: #BEFCFD;
+    --orange: #FF8847;
+    --white: white;
+    --app-title: "Arimo";
+    --app-headers: "Fira Sans";
+    --app-text: "Work Sans";
+}
+
 .signup-form-container {
     display: flex;
     flex-direction: column;
@@ -12,6 +23,14 @@
     flex-direction: column;
 
     border: 2px solid red;
+    padding: 0px 10px;
     height: 60%;
     width: 40%;
+}
+
+.signup-form h2 {
+    align-self: center;
+    font-family: var(--app-headers);
+    letter-spacing: 2px;
+    color: var(--dark-blue);
 }

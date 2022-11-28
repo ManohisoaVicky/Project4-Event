@@ -77,6 +77,7 @@ function Input(props) {
     onChange={(e) => props.handleChange(e)}
     onBlur={props.blurHandler}
     placeholder={props.placeholder}
+    className={props.name}
     />
   ) : (props.name === "password" || props.name === "password_confirmation") ? (
     <input 
@@ -86,6 +87,7 @@ function Input(props) {
     onChange={(e) => props.handleChange(e)}
     onBlur={props.blurHandler}
     placeholder={props.placeholder}
+    className={props.name}
     autoComplete={props.autoComplete}
     />
   ) : props.name === "search" && (
