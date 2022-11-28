@@ -1,4 +1,15 @@
-.event-form-container {
+:root {
+    --dark-blue: #548687;
+    --light-blue: #E6F4F1;
+    --aqua: #BEFCFD;
+    --orange: #FF8847;
+    --white: white;
+    --app-title: "Arimo";
+    --app-headers: "Fira Sans";
+    --app-text: "Work Sans";
+}
+
+.update-event-form-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,8 +18,19 @@
     margin: 0 auto;
 }
 
-.event-form {
-    border: 2px solid blue;
+.update-event-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    border: 2px solid var(--dark-blue);
+    color: var(--dark-blue);
+    font-family: var(--app-text);
+    padding: 10px;
     height: 70%;
     width: 50%;
+}
+
+.update-event-btn-container button {
+    margin-right: 20px;
 }

@@ -63,6 +63,8 @@ input {
     border-radius: 3px;
     outline: none;
     transition: 0.5s ease-out;
+    color: var(--dark-blue);
+    line-height: 25px;
 }
 
 .description:focus {

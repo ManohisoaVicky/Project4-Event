@@ -43,7 +43,7 @@ function UpdateEventPage() {
       ...event,
       [e.target.name]: e.target.value
     });
-  }
+  } 
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -54,17 +54,16 @@ function UpdateEventPage() {
   const formIsInvalid = !(nameIsValid && descriptionIsValid && dateIsValid && timeIsValid && durationIsValid)
 
   return (
-    <div className='event-form-container'>
+    <div className='update-event-form-container'>
       { user ?
         event ?
         user.id === event.host ?
-        <form onSubmit={handleSubmit} className="event-form" >
+        <form onSubmit={handleSubmit} className="update-event-form" >
           <Input 
           type="text"
           value={event.name}
           name="name" 
           handleChange={handleChange} 
-          label="Name"
           placeholder="Name" 
           />
           {!nameIsValid && <ErrorMessage error="input-validation-error" text="Please provide a valid event name."/>}
@@ -72,7 +71,7 @@ function UpdateEventPage() {
           value={event.description}
           name="description"
           handleChange={handleChange}
-          label="Description"
+          rows={5}
           />
           {!descriptionIsValid && <ErrorMessage error="input-validation-error" text="Please provide a valid event description."/> }
           <Input 
@@ -103,7 +102,10 @@ function UpdateEventPage() {
           option3="60 mins"
           />
           {!durationIsValid && <ErrorMessage error="input-validation-error" text="Please provide a valid duration." />}
-          <Button type="SUBMIT" text="SUBMIT" isDisabled={formIsInvalid} />
+          <div className='update-event-btn-container'>
+            <Button type="SUBMIT" text="SUBMIT" isDisabled={formIsInvalid} />
+            <Button text="CANCEL" clickHandler={() => navigate(-1)} />
+          </div>
         </form> 
         : <ErrorMessage error="authorization-error" text="UNAUTHORIZED ACTION" />
         : <ErrorMessage error="authorization-error" text="EVENT DOES NOT EXIST" />

@@ -12,7 +12,7 @@ function Button(props) {
   ) : props.text === "SUBMIT" ? (
     <button type={props.type} disabled={props.isDisabled} className={props.isDisabled ? "disabled" : "submit-btn"}>{props.text}</button>
   ) : props.text === "CANCEL" && (
-    <button className='cancel-btn'>{props.text}</button>
+    <button className='cancel-btn' onClick={props.clickHandler ? props.clickHandler : undefined} >{props.text}</button>
   )
   return (
     <>
