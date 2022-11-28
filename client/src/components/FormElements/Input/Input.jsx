@@ -26,6 +26,7 @@ function Input(props) {
     onBlur={props.blurHandler}
     rows={props.rows || 3}
     className={props.name}
+    placeholder={props.placeholder}
     label={props.label}
     />
   ) : props.name === "date" ? (

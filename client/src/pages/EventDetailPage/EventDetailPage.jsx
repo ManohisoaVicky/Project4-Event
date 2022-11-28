@@ -4,7 +4,6 @@ import { getSingleEvent, deleteEvent } from '../../utils/eventService'
 import { getUser } from '../../utils/userService'
 
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
-import Button from '../../components/FormElements/Button/Button'
 import EventDetailCard from '../../components/EventDetailCard/EventDetailCard'
 import "./EventDetailPage.css"
 

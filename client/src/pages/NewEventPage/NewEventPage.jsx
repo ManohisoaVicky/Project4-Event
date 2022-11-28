@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import isMatch from 'date-fns/isMatch'
 import { useNavigate } from 'react-router-dom'
 import { createEvent } from "../../utils/eventService"
@@ -70,27 +71,32 @@ function NewEventPage() {
   const formIsInvalid = !(event.name && event.description && event.date && event.time && event.duration)
 
   return (
-    <div className='event-form-container'>
+    <div className='new-event-form-container'>
       {user ?
-      <form onSubmit={handleSubmit} className="event-form" >
+      <form onSubmit={handleSubmit} className="new-event-form" >
+        <div>
         <Input 
         type="text"
         value={event.name}
         name="name" 
         handleChange={handleChange} 
-        label="Name"
         placeholder="Name" 
         blurHandler={blurHandler}
         />
         {nameIsInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid event name."/>}
+        </div>
+        <div>
         <Input
         value={event.description}
         name="description"
         handleChange={handleChange}
         blurHandler={blurHandler}
-        label="Description"
+        placeholder="Description"
+        rows={5}
         />
         {descriptionIsInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid event description."/> }
+        </div>
+        <div>
         <Input 
         type="date"
         value={event.date}
@@ -100,6 +106,8 @@ function NewEventPage() {
         label="Date"
         />
         {dateIsInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid date." /> }
+        </div>
+        <div>
         <Input 
         type="time"
         value={event.time}
@@ -109,6 +117,8 @@ function NewEventPage() {
         label="Time"
         />
         {timeIsInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid time." /> }
+        </div>
+        <div>
         <Input 
         type="text"
         value={event.duration}
@@ -122,7 +132,11 @@ function NewEventPage() {
         option3="60 mins"
         />
         {durationIsInvalid && <ErrorMessage error="input-validation-error" text="Please provide a valid duration." /> }
-        <Button type="Submit" text="SUBMIT" isDisabled={formIsInvalid} />
+        </div>
+        <div className='new-event-btn-container'>
+          <Button type="Submit" text="SUBMIT" isDisabled={formIsInvalid} />
+          <Link to={`/profile/${user.id}`}><Button text="CANCEL"/></Link>
+        </div>
       </form>
       : <ErrorMessage error="authorization-error" text="ONLY LOGGED IN USERS CAN CREATE EVENTS" />}
     </div>

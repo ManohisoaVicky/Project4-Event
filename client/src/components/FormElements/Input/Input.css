@@ -14,20 +14,23 @@
     flex-direction: column;
 }
 
+input {
+    font-size: 16px;
+    font-family: var(--app-text);
+}
+
 .first_name, 
 .last_name, 
 .username, 
 .email, 
 .password, 
-.password_confirmation {
-    /* margin: 40px 0px 0px 0px; */
+.password_confirmation, 
+.name {
     border: none;
     border-bottom: 2px solid var(--light-blue);
     outline: none;
     color: var(--dark-blue);
-    font-size: 16px;
     transition: 0.8s;
-    font-family: var(--app-text);
 }
 
 .first_name:focus, 
@@ -35,10 +38,56 @@
 .username:focus, 
 .email:focus,
 .password:focus,
-.password_confirmation:focus {
+.password_confirmation:focus, 
+.name:focus {
     border-bottom: 2px solid var(--dark-blue);
 }
 
 .custom-input-container input::placeholder {
     color: var(--dark-blue);
+}
+
+.name {
+    margin-top: 50px;
+    font-size: 20px;
+}
+
+.description::placeholder {
+    color: var(--dark-blue);
+    font-family: var(--app-text);
+    font-size: 16px;
+}
+
+.description {
+    border: 2px solid var(--light-blue);
+    border-radius: 3px;
+    outline: none;
+    transition: 0.5s ease-out;
+}
+
+.description:focus {
+    outline: 2px solid var(--dark-blue);   
+}
+
+input[type="date"], 
+input[type="time"], 
+select {
+    color: var(--dark-blue);
+    border: 2px solid var(--light-blue);
+    border-radius: 5px;
+    outline: none;
+    transition: 0.5s ease-out;
+    height: 30px;
+}
+
+input[type="date"]:focus, 
+input[type="time"]:focus, 
+select:focus {
+    outline: 2px solid var(--dark-blue);   
+}
+
+select {
+    background-color: transparent;
+    font-size: 15px;
+    outline: none;
 }
