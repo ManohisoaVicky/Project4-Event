@@ -1,7 +1,48 @@
+:root {
+    --dark-blue: #548687;
+    --light-blue: #E6F4F1;
+    --aqua: #BEFCFD;
+    --orange: #FF8847;
+    --white: white;
+    --app-title: "Arimo";
+    --app-headers: "Fira Sans";
+    --app-text: "Work Sans";
+}
+
 .profile-card-container {
-    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+
+    margin: 30px 0px;
 }
 
 .profile-card-container a {
     margin-right: 30px;
+    color: var(--dark-blue);
+}
+
+.profile-card-container a:hover {
+    color: var(--orange);
+}
+
+.profile-card-info {
+    width: 60%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.035),
+                0px 0px 80px rgba(0, 0, 0, 0.07);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.profile-card-info h2 {
+    align-self: center;
+    color: var(--dark-blue);
+}
+
+.profile-username {
+    color: var(--orange);
+}
+
+.profile-bio {
+    font-family: var(--app-text);
+    color: var(--dark-blue);
 }

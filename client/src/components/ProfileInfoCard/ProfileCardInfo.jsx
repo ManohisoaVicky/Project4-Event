@@ -16,18 +16,14 @@ function ProfileCardInfo({user, userID, paramID}) {
   return (
     <div className='profile-card-container'>
     {
-      user ? (
-        <>
-        <h2>{user.first_name} {user.last_name}</h2>
-        <p>{user.username}</p>
-        <p>{user.bio}</p>
+      user && (
+        <div className='profile-card-info'>
+          <h2>{user.first_name} {user.last_name}</h2>
+          <p className='profile-username'>{user.username && "@"}{user.username}</p>
+          <p className='profile-bio'>{user.bio}</p>
         {links}
-        </>
-      ) : (
-      <>
-      <h2>PROFILE CARD INFO</h2>
-      </>
-      )
+        </div>
+      ) 
     }
     </div>
   )
