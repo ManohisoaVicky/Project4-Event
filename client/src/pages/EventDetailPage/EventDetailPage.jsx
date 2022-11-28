@@ -36,17 +36,20 @@ function EventDetailPage() {
   }
 
   return (
-    <div>
+    <div className='event-detail-page-container'>
       { event ?
-        <EventDetailCard name={event.name} description={event.description} date={event.date} time={event.time} duration={event.duration} />
+        <EventDetailCard 
+        name={event.name} 
+        description={event.description} 
+        date={event.date} 
+        time={event.time} 
+        duration={event.duration} 
+        event={event} 
+        user={user}
+        handleDelete={handleDelete}
+        toUpdatePage={toUpdatePage}
+        />
       : <ErrorMessage error="authorization-error" text="EVENT DOES NOT EXIST" />}
-      {
-        (event && user && event.host === user.id) &&
-        <>
-        <Button text="DELETE" handleDelete={handleDelete} />
-        <Button text="UPDATE" toUpdatePage={toUpdatePage} />
-        </>
-      }
     </div>
   )
 }

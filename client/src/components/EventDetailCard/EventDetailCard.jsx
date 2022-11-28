@@ -1,16 +1,35 @@
 import React from 'react'
 import { format } from 'date-fns'
 
+import Button from '../FormElements/Button/Button'
+import "./EventDetailCard.css"
+
 function EventDetailCard(props) {
 
   let formattedDate = format(new Date(props.date), 'MMMM dd, yyyy')
 
+  let formattedTime = props.time.replace(/(:\d{2}| [AP]M)$/, "")
+
   return (
-    <div>
-      <h2>{props.name}</h2>
-      <p>{props.description}</p>
-      <p>{formattedDate}</p>
-      <p>{props.duration}</p>
+    <div className='event-detail-container'>
+      <div className='event-details'>
+        <div className='event-detail-name'>
+          <h2>{props.name}</h2>
+        </div>
+        <div className='about-event-container'>
+          <h3>About the event</h3>
+          <p>{props.description}</p>
+          <p><span className='event-info'>Date:</span> {formattedDate}</p>
+          <p><span className='event-info'>Time:</span> {formattedTime}</p>
+          <p><span className='event-info'>Duration:</span> {props.duration}</p>
+        </div>
+        {(props.event && props.user && props.event.host === props.user.id) && (
+        <div className='event-detail-btn-container'>
+          <Button text="UPDATE" toUpdatePage={props.toUpdatePage} />
+          <Button text="DELETE" handleDelete={props.handleDelete} />
+        </div>
+        )}
+      </div>
     </div>
   )
 }
