@@ -59,7 +59,7 @@ const updateEvent = async (event, eventID) => {
   try {
     const token = getToken();
     let res = await fetch(BASE_URL + eventID + "/", {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
         Authorization: "Bearer " + token,
