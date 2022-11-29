@@ -65,7 +65,7 @@ function ProfilePage() {
     </div>
     </>
     : <ErrorMessage error="authorization-error" text="USER DOES NOT EXIST" />
-    : <ErrorMessage error="authorization-error" text="YOU ARE NOT LOGGED IN"/>}
+    : <ErrorMessage error="authorization-error" text="LOG IN OR SIGN UP TO VIEW OTHER PEOPLE'S PROFILE"/>}
     </>
   )
 }

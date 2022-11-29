@@ -16,3 +16,15 @@
     font-family: var(--app-text);
     color: var(--orange);
 }
+
+.authorization-error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-family: var(--app-headers);
+    color: var(--dark-blue);
+    font-weight: bold;
+    height: 100%;
+    letter-spacing: 2px;
+}

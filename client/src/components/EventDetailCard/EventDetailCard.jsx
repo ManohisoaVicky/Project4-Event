@@ -24,13 +24,16 @@ function EventDetailCard(props) {
           <p><span className='event-info'>Time:</span> {formattedTime}</p>
           <p><span className='event-info'>Duration:</span> {props.duration}</p>
         </div>
-        {(props.event && props.user && props.event.host.id === props.user.id) ? (
+        {(props.event && props.user && (props.event.host.id === props.user.id)) ? (
         <div className='event-detail-btn-container'>
           <Button text="UPDATE" toUpdatePage={props.toUpdatePage} />
           <Button text="DELETE" handleDelete={props.handleDelete} />
         </div>
-        ): (props.event && props.user) && (
+        ): (props.event) && (
+          <>
           <AboutHost host={props.event.host} />
+          <div>{props.user && props.event && <Button text="JOIN EVENT">JOIN EVENT</Button>}</div>
+          </>
         )}
       </div>
     </div>

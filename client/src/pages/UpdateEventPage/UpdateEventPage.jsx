@@ -14,6 +14,8 @@ function UpdateEventPage() {
 
   const [event, setEvent] = useState()
 
+  const [state, setState] = useState()
+
   const { user } = useUser()
 
   let nameIsValid, descriptionIsValid, dateIsValid, timeIsValid, durationIsValid = null
@@ -28,6 +30,8 @@ function UpdateEventPage() {
       setEvent(res)
     }
     getEvent()
+    setState(event)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [eventID])
   
   if (event) {
@@ -49,6 +53,11 @@ function UpdateEventPage() {
     e.preventDefault()
     updateEvent(event, eventID)
     navigate(`/event/detail/${eventID}`)
+  }
+
+  const clickHandler = () => {
+    setEvent(state)
+    navigate(-1)
   }
 
   const formIsInvalid = !(nameIsValid && descriptionIsValid && dateIsValid && timeIsValid && durationIsValid)
@@ -104,7 +113,7 @@ function UpdateEventPage() {
           {!durationIsValid && <ErrorMessage error="input-validation-error" text="Please provide a valid duration." />}
           <div className='update-event-btn-container'>
             <Button type="SUBMIT" text="SUBMIT" isDisabled={formIsInvalid} />
-            <Button text="CANCEL" clickHandler={() => navigate(-1)} />
+            <Button text="CANCEL" clickHandler={clickHandler} />
           </div>
         </form> 
         : <ErrorMessage error="authorization-error" text="UNAUTHORIZED ACTION" />
