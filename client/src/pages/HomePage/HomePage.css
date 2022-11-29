@@ -47,3 +47,8 @@ color: var(--dark-blue);
     padding: 0px 5px 0px 10px;
     color: var(--dark-blue);
 }
+
+.homepage-no-events {
+    color: var(--dark-blue);
+    font-family: var(--app-title);
+}

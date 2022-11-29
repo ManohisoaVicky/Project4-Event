@@ -57,7 +57,7 @@ function UpdateEventPage() {
     <div className='update-event-form-container'>
       { user ?
         event ?
-        user.id === event.host ?
+        user.id === event.host.id ?
         <form onSubmit={handleSubmit} className="update-event-form" >
           <Input 
           type="text"

@@ -35,7 +35,7 @@ function HomePage() {
       handleChange={handleChange}
       placeholder="Find events"
       />
-      {events &&
+      {events && events.length !== 0?
         events.map((event) => {
           return <EventCard 
                   key={event.id} 
@@ -45,7 +45,9 @@ function HomePage() {
                   date={event.date}
                   host={event.host}
                   />
-        })
+        }) : (
+          <p className='homepage-no-events'>There are currently no events</p>
+        )
       }
     </div>
   )

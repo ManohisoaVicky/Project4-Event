@@ -1,3 +1,25 @@
+:root {
+    --dark-blue: #548687;
+    --light-blue: #E6F4F1;
+    --aqua: #BEFCFD;
+    --orange: #FF8847;
+    --white: white;
+    --app-title: "Arimo";
+    --app-headers: "Fira Sans";
+    --app-text: "Work Sans";
+}
+
 .user-events-container {
     margin: 0px 50px;
+}
+
+.no-event-container {
+    font-weight: bold;
+    color: var(--dark-blue);
+    font-family: var(--app-text);
+    text-align: center;
+}
+
+.no-event-container p {
+    margin-top: 50px;
 }

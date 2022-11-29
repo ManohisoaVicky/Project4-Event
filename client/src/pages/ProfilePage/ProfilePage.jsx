@@ -56,7 +56,11 @@ function ProfilePage() {
                   />
         }))
       :
-      <p>No Events</p>
+      <div className='no-event-container'>
+        <p>
+          No Events
+        </p>
+      </div>
       }
     </div>
     </>
