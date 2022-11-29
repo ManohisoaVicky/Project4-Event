@@ -9,7 +9,6 @@ class Event(models.Model):
     date = models.DateField()
     time = models.TimeField()
     duration = models.CharField(max_length=50)
-    participant = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="participants", blank=True)
 
     def __str__(self):
         return self.name
