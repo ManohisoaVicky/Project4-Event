@@ -10,9 +10,22 @@
 }
 
 .submit-btn {
+    border: 2px solid var(--dark-blue);
+    color: var(--dark-blue);
+    background: var(--white);
+}
+
+.cancel-btn {
+    border: 2px solid var(--white);
+    color: var(--white);
+    background: var(--orange);
+}
+
+
+.submit-btn, 
+.cancel-btn {
     width: 130px;
     height: 40px;
-    color: #fff;
     padding: 5px 10px;
     font-weight: bold;
     cursor: pointer;
@@ -22,21 +35,33 @@
     outline: none;
     border-radius: 5px;
     z-index: 0;
-    background: #fff;
     overflow: hidden;
-    border: 2px solid var(--dark-blue);
-    color: var(--dark-blue);
 }
 
 .submit-btn:hover {
     color: #fff;
 }
 
-.submit-btn:hover:after {
+.cancel-btn:hover {
+    color: var(--orange);
+    border: 2px solid var(--orange);
+}
+
+.submit-btn:hover:after, 
+.cancel-btn:hover:after {
     width: 100%;
 }
 
 .submit-btn:after {
+    background: var(--dark-blue);
+}
+
+.cancel-btn:after {
+    background: var(--white);
+}
+
+.submit-btn:after, 
+.cancel-btn:after {
     content: "";
     position: absolute;
     z-index: -1;
@@ -45,7 +70,6 @@
     top: 0;
     width: 0;
     height: 100%;
-    background: var(--dark-blue);
 }
 
 .disabled {
@@ -57,128 +81,8 @@
     cursor: not-allowed;
 }
 
-.cancel-btn {
-    min-width: 130px;
-    height: 40px;
-    color: var(--orange);
-    padding: 5px 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-    outline: none;
-    border-radius: 5px;
-    z-index: 0;
-    background: var(--orange);
-    overflow: hidden;
-    border: 2px solid var(--white);
-    color: var(--white);
-}
-
-.cancel-btn:hover {
-    color: var(--orange);
-    border: 2px solid var(--orange);
-}
-
-.cancel-btn:hover:after {
-    width: 100%;
-}
-
-.cancel-btn:after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    transition: all 0.3s ease;
-    left: 0;
-    top: 0;
-    width: 0;
-    height: 100%;
-    background: var(--white);
-}
-
-.update-btn {
-    min-width: 130px;
-    height: 40px;
-    color: #fff;
-    padding: 5px 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-    outline: none;
-    border-radius: 5px;
-    border: none;
-    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
-    background: var(--dark-blue);
-   z-index: 1;
-}
-
-.update-btn:hover:after {
-    width: 100%;
-    left: 0;
-}
-
-.update-btn:after {
-    border-radius: 5px;
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 100%;
-    top: 0;
-    z-index: -1;
-    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
-    transition: all 0.3s ease;
-    background-color: var(--dark-blues);
-    right: 0;
-}
-
-.update-btn:active {
-    top: 2px;
-}
-
-.delete-btn {
-    min-width: 130px;
-    height: 40px;
-    color: #fff;
-    padding: 5px 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-    outline: none;
-    border-radius: 5px;
-    border: none;
-    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
-    background: var(--orange);
-   z-index: 1;
-}
-
-.delete-btn:hover:after {
-    width: 100%;
-    left: 0;
-}
-
-.delete-btn:after {
-    border-radius: 5px;
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 100%;
-    top: 0;
-    z-index: -1;
-    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
-    transition: all 0.3s ease;
-    background-color: var(--orange);
-    right: 0;
-}
-
-.delete-btn:active {
-    top: 2px;
-}
-
+.update-btn, 
+.delete-btn, 
 .join-btn {
     min-width: 130px;
     height: 40px;
@@ -193,15 +97,42 @@
     border-radius: 5px;
     border: none;
     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
-    background: linear-gradient(203deg, var(--light-blue) 0%, var(--dark-blue) 46%, var(--orange) 100%);
-   z-index: 1;
+    z-index: 1;
 }
 
+.update-btn {
+    background: var(--dark-blue);
+}
+
+.delete-btn {
+    background: var(--orange);
+}
+
+.join-btn {
+    background: linear-gradient(203deg, var(--light-blue) 0%, var(--dark-blue) 46%, var(--orange) 100%);
+}
+
+.update-btn:hover:after, 
+.delete-btn:hover:after, 
 .join-btn:hover:after {
     width: 100%;
     left: 0;
 }
 
+.update-btn:after{
+    background-color: var(--dark-blues);
+}
+
+.delete-btn:after {
+    background-color: var(--orange);
+}
+
+.join-btn:after {
+    background-color: linear-gradient(203deg, var(--light-blue) 0%, var(--dark-blue) 46%, var(--orange) 100%);
+}
+
+.update-btn:after, 
+.delete-btn:after, 
 .join-btn:after {
     border-radius: 5px;
     position: absolute;
@@ -212,13 +143,16 @@
     z-index: -1;
     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
     transition: all 0.3s ease;
-    background-color: linear-gradient(203deg, var(--light-blue) 0%, var(--dark-blue) 46%, var(--orange) 100%);
     right: 0;
 }
 
+.update-btn:active, 
+.delete-btn:active, 
 .join-btn:active {
     top: 2px;
 }
+
+
 
 
 
