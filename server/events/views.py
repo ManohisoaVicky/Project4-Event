@@ -49,8 +49,10 @@ class EventDetailUpdateDelete(APIView):
 
     def patch(self, request, pk):
         event = Event.objects.get(id=pk)
-        serializer = EventSerializer(event, request.data)
-        print(request.data)
+        data = request.data
+        host = request.data['host']['id']
+        data['host'] = host
+        serializer = EventSerializer(event, data)
         if serializer.is_valid():
             serializer.save()
         return JsonResponse(serializer.data)
