@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { updateProfile, myUserProfile } from '../../utils/userService'
 import useUser from "../../hooks/userUser"
@@ -10,6 +10,8 @@ import Input from '../../components/FormElements/Input/Input'
 import "./ProfileEditPage.css"
 
 function ProfileEditPage({state, setState}) {
+
+  const [profile, setProfile] = useState()
 
   let firstInvalid, lastInvalid, formIsInvalid = null
 
@@ -26,8 +28,10 @@ function ProfileEditPage({state, setState}) {
       setState(currentUser)
     }
     getUserInfo()
+    setProfile(state)
   }
-  }, [userID, setState, user])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userID, setState, user, setProfile])
 
   if (state) {
     firstInvalid =  !isEmpty(state.first_name)
@@ -53,6 +57,11 @@ function ProfileEditPage({state, setState}) {
 
   if (state) {
     formIsInvalid = !(state.first_name && state.last_name)
+  }
+
+  const clickHandler = () => {
+    setState(profile)
+    navigate(-1)
   }
 
   return (
@@ -92,8 +101,8 @@ function ProfileEditPage({state, setState}) {
         placeholder="Tell us about you"
         />
         <div className='update-profile-btn-container'>
-          <Button text="SUBMIT" isDisabled={formIsInvalid} />
-          <Button text="CANCEL" clickHandler={() => navigate(-1)} />
+          <Button text="SUBMIT" type="Submit" isDisabled={formIsInvalid} />
+          <Button text="CANCEL" clickHandler={clickHandler} />
         </div>
       </form>
       : <ErrorMessage error="authorization-error" text="UNAUTHORIZED ACTION"/>
