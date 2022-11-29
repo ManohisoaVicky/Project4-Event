@@ -42,7 +42,7 @@ class EventDetailUpdateDelete(APIView):
     def get(self, request, pk):
         try:
             event = Event.objects.get(id=pk)
-            serializer = EventSerializer(event)
+            serializer = PopulatedEventSerializer(event)
             return JsonResponse(serializer.data, safe=False)
         except Event.DoesNotExist:
             raise Http404('Event does not exist')

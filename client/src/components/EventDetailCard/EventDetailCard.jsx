@@ -1,6 +1,7 @@
 import React from 'react'
 import { format } from 'date-fns'
 
+import AboutHost from '../AboutHost/AboutHost'
 import Button from '../FormElements/Button/Button'
 import "./EventDetailCard.css"
 
@@ -23,11 +24,13 @@ function EventDetailCard(props) {
           <p><span className='event-info'>Time:</span> {formattedTime}</p>
           <p><span className='event-info'>Duration:</span> {props.duration}</p>
         </div>
-        {(props.event && props.user && props.event.host === props.user.id) && (
+        {(props.event && props.user && props.event.host === props.user.id) ? (
         <div className='event-detail-btn-container'>
           <Button text="UPDATE" toUpdatePage={props.toUpdatePage} />
           <Button text="DELETE" handleDelete={props.handleDelete} />
         </div>
+        ): (props.event && props.user) && (
+          <AboutHost host={props.event.host} />
         )}
       </div>
     </div>

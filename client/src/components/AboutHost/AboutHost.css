@@ -1,0 +1,41 @@
+:root {
+    --dark-blue: #548687;
+    --light-blue: #E6F4F1;
+    --aqua: #BEFCFD;
+    --orange: #FF8847;
+    --white: white;
+    --app-title: "Arimo";
+    --app-headers: "Fira Sans";
+    --app-text: "Work Sans";
+}
+
+.about-host-container {
+    border: 2px solid var(--dark-blue);
+    margin-top: 40px;
+    padding: 10px;
+    width: 40%;
+}
+
+.about-host-container h3 {
+    color: var(--dark-blue);
+    font-family: var(--app-headers);
+}
+
+.about-host-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.about-host-name {
+    font-family: var(--app-text);
+}
+
+.about-host-name:hover {
+    color: var(--orange);
+    cursor: pointer;
+}
+
+.about-host-bio-container {
+    color: var(--dark-blue);
+    font-family: var(--app-text);
+}
