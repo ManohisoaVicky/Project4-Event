@@ -38,6 +38,7 @@
     padding: 2em 0;  
     border: none;
     color: black;
+    font-family: var(--app-text);
 }
 
 .tab:not(:last-child) {
@@ -48,6 +49,7 @@
     background: var(--dark-blue);
     font-weight: bold;
     color: var(--white);
+    font-family: var(--app-text);
 }
 
 .panels-container {
@@ -66,4 +68,14 @@
 
 .panel.active {
     display: block;
+}
+
+.tab-no-event {
+    display: flex;
+    justify-content: center;
+
+    height: 100%;
+    align-items: center;
+    color: var(--dark-blue);
+    font-family: var(--app-text);
 }

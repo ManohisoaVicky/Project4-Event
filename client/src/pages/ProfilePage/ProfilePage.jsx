@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { myUserProfile } from '../../utils/userService'
 import { getUserEvent } from '../../utils/eventService'
+import { getJoinedEvents } from '../../utils/eventService'
 import useUser from "../../hooks/userUser"
 
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
@@ -11,6 +12,8 @@ import Tab from '../../components/Tab/Tab'
 import "./ProfilePage.css"
 
 function ProfilePage() {
+
+  const [joinedEvents, setJoinedEvents] = useState()
 
   const { user } = useUser()
   
@@ -33,7 +36,12 @@ function ProfilePage() {
       const events = await getUserEvent(paramID)
       setEvents(events)
     }
+    async function getAlJoinedEvents() {
+      const userJoinedEvents = await getJoinedEvents(userID)
+      setJoinedEvents(userJoinedEvents)
+    }
     getUserInfoAndEvents()
+    getAlJoinedEvents()
   }
   }, [userID, user, paramID])
 
@@ -45,8 +53,8 @@ function ProfilePage() {
       <>
         <ProfileCardInfo user={currentUser} userID={userID} paramID={paramID} />
         {userID === parseInt(paramID) ? 
-        <Tab events={events} /> : 
-        <>
+        <Tab events={events} joinedEvents={joinedEvents}/> : 
+        <div className='user-events-container'>
         {
         events &&
         events.length !== 0 ? (
@@ -66,11 +74,11 @@ function ProfilePage() {
           </p>
         </div>
         }
-        </>
+        </div>
         }
       </>
       : <ErrorMessage error="authorization-error" text="USER DOES NOT EXIST" />
-      : <ErrorMessage error="authorization-error" text="LOG IN OR SIGN UP TO VIEW OTHER PEOPLE'S PROFILE"/>
+      : <ErrorMessage error="authorization-error" text="YOU ARE NOT LOGGED IN"/>
     }
     </>
   )

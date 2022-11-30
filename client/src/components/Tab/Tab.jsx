@@ -40,15 +40,32 @@ function Tab(props) {
                         date={event.date}
                         />
               })
-            : <p>YOU HAVE NO EVENTS</p>
+            : 
+            <div className='tab-no-event'>
+                <p>YOU HAVE NO EVENTS</p>
+            </div>
             : <></>
             }
         </div>
         <div className={`panel ${checkActive(2, "active")}`}>
-            <p>Nulla lobortis quis massa quis lobortis. Nullam porta semper lorem, vel efficitur augue rutrum quis. Suspendisse potenti.</p>
-        </div>
-        <div className={`panel ${checkActive(3, "active")}`}>
-            <p>Cras porta consectetur dolor porttitor fringilla. Cras vitae urna ac erat fermentum egestas. Donec egestas cursus scelerisque.</p>
+        {
+            props.joinedEvents ?
+            props.joinedEvents.length !== 0 ? 
+            props.joinedEvents.map((event) => {
+                return <EventCard 
+                        key={event.id} 
+                        eventID={event.id}
+                        name={event.name} 
+                        description={event.description}
+                        date={event.date}
+                        />
+              })
+            : 
+            <div className='tab-no-event'>
+                <p>YOU HAVE NOT JOINED ANY EVENTS</p>
+            </div>
+            : <></>
+            }
         </div>
     </div>
     </div>

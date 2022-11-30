@@ -97,6 +97,15 @@ const addParticipant = async (eventID) => {
   }
 };
 
+const getJoinedEvents = async (userID) => {
+  try {
+    let res = await fetch(BASE_URL + "joined/" + userID + "/");
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export {
   getEvents,
   createEvent,
@@ -105,4 +114,5 @@ export {
   updateEvent,
   getUserEvent,
   addParticipant,
+  getJoinedEvents,
 };

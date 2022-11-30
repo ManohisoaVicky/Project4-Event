@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { addParticipant } from '../../utils/eventService'
 import { format } from 'date-fns'
 
@@ -8,12 +9,16 @@ import "./EventDetailCard.css"
 
 function EventDetailCard(props) {
 
+  const navigate = useNavigate()
+
   let formattedDate = format(new Date(props.date), 'MMMM dd, yyyy')
 
   let formattedTime = props.time.replace(/(:\d{2}| [AP]M)$/, "")
 
   const joinEvent = () => {
     addParticipant(props.id)
+    navigate(`/profile/${props.user.id}`)
+
   }
 
   return (
