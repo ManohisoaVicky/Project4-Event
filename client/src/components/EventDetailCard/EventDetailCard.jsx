@@ -1,4 +1,5 @@
 import React from 'react'
+import { addParticipant } from '../../utils/eventService'
 import { format } from 'date-fns'
 
 import AboutHost from '../AboutHost/AboutHost'
@@ -10,6 +11,10 @@ function EventDetailCard(props) {
   let formattedDate = format(new Date(props.date), 'MMMM dd, yyyy')
 
   let formattedTime = props.time.replace(/(:\d{2}| [AP]M)$/, "")
+
+  const joinEvent = () => {
+    addParticipant(props.id)
+  }
 
   return (
     <div className='event-detail-container'>
@@ -32,7 +37,7 @@ function EventDetailCard(props) {
         ): (props.event) && (
           <>
           <AboutHost host={props.event.host} />
-          <div>{props.user && props.event && <Button text="JOIN EVENT">JOIN EVENT</Button>}</div>
+          <div>{props.user && props.event && <Button text="JOIN EVENT" clickHandler={joinEvent} >JOIN EVENT</Button>}</div>
           </>
         )}
       </div>

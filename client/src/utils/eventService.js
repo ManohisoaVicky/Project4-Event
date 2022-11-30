@@ -81,10 +81,10 @@ const getUserEvent = async (userID) => {
   }
 };
 
-const addParticipant = async () => {
+const addParticipant = async (eventID) => {
   try {
     const token = getToken();
-    let res = await fetch(BASE_URL, {
+    let res = await fetch(BASE_URL + eventID + "/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=UTF-8",

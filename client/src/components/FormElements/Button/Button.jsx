@@ -1,13 +1,8 @@
 import React from 'react'
-import { addParticipant } from '../../../utils/eventService'
 
 import "./Button.css"
 
 function Button(props) {
-
-  const joinEvent = () => {
-    addParticipant()
-  }
 
   let button = 
   props.text === "DELETE" ? (
@@ -19,7 +14,7 @@ function Button(props) {
   ) : props.text === "CANCEL" ? (
     <button className='cancel-btn' onClick={props.clickHandler ? props.clickHandler : undefined} >{props.text}</button>
   ) : props.text === "JOIN EVENT" && (
-    <button className='join-btn' onClick={joinEvent}>{props.text}</button>
+    <button className='join-btn' onClick={props.clickHandler}>{props.text}</button>
   )
   return (
     <>

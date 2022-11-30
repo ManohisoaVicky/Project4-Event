@@ -38,6 +38,7 @@ function EventDetailPage() {
     <div className='event-detail-page-container'>
       { event ?
         <EventDetailCard 
+        id={event.id}
         name={event.name} 
         description={event.description} 
         date={event.date} 
