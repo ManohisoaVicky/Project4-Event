@@ -7,6 +7,7 @@ import useUser from "../../hooks/userUser"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
 import EventCard from "../../components/EventCard/EventCard"
 import ProfileCardInfo from "../../components/ProfileInfoCard/ProfileCardInfo"
+import Tab from '../../components/Tab/Tab'
 import "./ProfilePage.css"
 
 function ProfilePage() {
@@ -38,12 +39,15 @@ function ProfilePage() {
 
   return (
     <>
-    { user ?
+    {
+      user ? 
       currentUser ?
-    <>
-    <ProfileCardInfo user={currentUser} userID={userID} paramID={paramID} />
-    <div className='user-events-container'>
-      {
+      <>
+        <ProfileCardInfo user={currentUser} userID={userID} paramID={paramID} />
+        {userID === parseInt(paramID) ? 
+        <Tab events={events} /> : 
+        <>
+        {
         events &&
         events.length !== 0 ? (
         events.map((event) => {
@@ -55,17 +59,19 @@ function ProfilePage() {
                   date={event.date}
                   />
         }))
-      :
-      <div className='no-event-container'>
-        <p>
-          No Events
-        </p>
-      </div>
-      }
-    </div>
-    </>
-    : <ErrorMessage error="authorization-error" text="USER DOES NOT EXIST" />
-    : <ErrorMessage error="authorization-error" text="LOG IN OR SIGN UP TO VIEW OTHER PEOPLE'S PROFILE"/>}
+        :
+        <div className='no-event-container'>
+          <p>
+            No Events
+          </p>
+        </div>
+        }
+        </>
+        }
+      </>
+      : <ErrorMessage error="authorization-error" text="USER DOES NOT EXIST" />
+      : <ErrorMessage error="authorization-error" text="LOG IN OR SIGN UP TO VIEW OTHER PEOPLE'S PROFILE"/>
+    }
     </>
   )
 }

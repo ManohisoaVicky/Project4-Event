@@ -1,0 +1,69 @@
+:root {
+    --dark-blue: #548687;
+    --light-blue: #E6F4F1;
+    --aqua: #BEFCFD;
+    --orange: #FF8847;
+    --white: white;
+    --app-title: "Arimo";
+    --app-headers: "Fira Sans";
+    --app-text: "Work Sans";
+}
+
+.main-tab-container {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 50px;
+    width: 100%; 
+    height: 60%;
+}
+
+.tabs-container {
+    height: 100%;
+    width: 70%;
+}
+
+.tabs {  
+    display: flex; 
+    height: 10%;
+}
+
+.tab {  
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: var(--light-blue); 
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 2em 0;  
+    border: none;
+    color: black;
+}
+
+.tab:not(:last-child) {
+    border-right: 1px solid var(--light-blue);  
+}
+
+.tab.active {
+    background: var(--dark-blue);
+    font-weight: bold;
+    color: var(--white);
+}
+
+.panels-container {
+    height: 100%;
+}
+
+.panel {
+    display: none;
+    border: 1px solid var(--dark-blue);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 10px 30px;
+    height: 80%;
+    overflow-y: scroll;
+}
+
+.panel.active {
+    display: block;
+}
