@@ -21,7 +21,7 @@ function NavBar({state, setState}) {
 
   let nav = user && state ? (
     <>
-    <NavLink to="" className="nav-logo">EVENT APP</NavLink>
+    <NavLink to="" className="nav-logo">EVENTECH</NavLink>
     <div className='logged-in-links'>
       <NavLink to="" onClick={handleLogOut} id="logout-link" >LOG OUT</NavLink>
       <NavLink to={`/profile/${state.id}`} id="user-link">{state.first_name}</NavLink>

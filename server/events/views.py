@@ -82,4 +82,11 @@ class AllUserEvents(APIView):
         serializer = EventSerializer(events, many=True)
         return JsonResponse(serializer.data, safe=False)
 
+class GetJoinedEvents(APIView):
+
+    def get(self, request, pk):
+        events = Event.objects.all().filter(participant=pk).prefetch_related('participant')
+        serializer = EventSerializer(events, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
 
