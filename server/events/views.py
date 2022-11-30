@@ -47,6 +47,15 @@ class EventDetailUpdateDelete(APIView):
         except Event.DoesNotExist:
             raise Http404('Event does not exist')
 
+    def post(self, request, pk):
+        event = Event.objects.get(id=pk)
+        user = request.user.id
+        event.participant.add(user)
+        serializer = EventSerializer(event, request.data)
+        if serializer.is_valid():
+            serializer.save()
+        return JsonResponse({"message":"You've successfully registered to an event"})
+
     def patch(self, request, pk):
         event = Event.objects.get(id=pk)
         data = request.data

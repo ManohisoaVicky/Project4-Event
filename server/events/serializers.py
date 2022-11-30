@@ -10,4 +10,3 @@ class EventSerializer(serializers.ModelSerializer):
 class PopulatedEventSerializer(EventSerializer):
     host = MyUserSerializer()
 
-    

@@ -81,6 +81,22 @@ const getUserEvent = async (userID) => {
   }
 };
 
+const addParticipant = async () => {
+  try {
+    const token = getToken();
+    let res = await fetch(BASE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+        Authorization: "Bearer " + token,
+      },
+    });
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export {
   getEvents,
   createEvent,
@@ -88,4 +104,5 @@ export {
   deleteEvent,
   updateEvent,
   getUserEvent,
+  addParticipant,
 };
