@@ -46,6 +46,7 @@ function EventDetailPage() {
         duration={event.duration} 
         event={event} 
         user={user}
+        participant={event.participant}
         handleDelete={handleDelete}
         toUpdatePage={toUpdatePage}
         />

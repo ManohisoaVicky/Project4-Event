@@ -83,7 +83,8 @@
 
 .update-btn, 
 .delete-btn, 
-.join-btn {
+.join-btn, 
+.cancel-participation-btn {
     min-width: 130px;
     height: 40px;
     color: #fff;
@@ -108,13 +109,15 @@
     background: var(--orange);
 }
 
-.join-btn {
+.join-btn, 
+.cancel-participation-btn {
     background: linear-gradient(203deg, var(--light-blue) 0%, var(--dark-blue) 46%, var(--orange) 100%);
 }
 
 .update-btn:hover:after, 
 .delete-btn:hover:after, 
-.join-btn:hover:after {
+.join-btn:hover:after, 
+.cancel-participation-btn:hover:after {
     width: 100%;
     left: 0;
 }
@@ -127,13 +130,15 @@
     background-color: var(--orange);
 }
 
-.join-btn:after {
+.join-btn:after, 
+.cancel-participation-btn:after {
     background-color: linear-gradient(203deg, var(--light-blue) 0%, var(--dark-blue) 46%, var(--orange) 100%);
 }
 
 .update-btn:after, 
 .delete-btn:after, 
-.join-btn:after {
+.join-btn:after, 
+.cancel-participation-btn:after {
     border-radius: 5px;
     position: absolute;
     content: "";
@@ -148,7 +153,8 @@
 
 .update-btn:active, 
 .delete-btn:active, 
-.join-btn:active {
+.join-btn:active, 
+.cancel-participation-btn:active {
     top: 2px;
 }
 

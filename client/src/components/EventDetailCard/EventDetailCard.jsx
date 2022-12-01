@@ -21,6 +21,10 @@ function EventDetailCard(props) {
 
   }
 
+  const joined = () => {
+    return props.participant.includes(props.user.id)
+  }
+
   return (
     <div className='event-detail-container'>
       <div className='event-details'>
@@ -42,7 +46,8 @@ function EventDetailCard(props) {
         ): (props.event) && (
           <>
           <AboutHost host={props.event.host} />
-          <div>{props.user && props.event ? <Button text="JOIN EVENT" clickHandler={joinEvent} >JOIN EVENT</Button>
+          <div>{props.user && props.event && !joined() ? <Button text="JOIN EVENT" clickHandler={joinEvent} >JOIN EVENT</Button>
+              : props.user && props.event && joined()? <Button text="CANCEL PARTICIPATION">CANCEL PARTICIPATION</Button>
               : props.event && !props.user && <p className='login-or-signup-message'><Link to="/login">LOG IN</Link> OR <Link to="/signup">SIGN UP</Link> TO JOIN EVENTS</p>  
         }</div>
           </>

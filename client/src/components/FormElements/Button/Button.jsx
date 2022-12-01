@@ -13,8 +13,10 @@ function Button(props) {
     <button type={props.type} disabled={props.isDisabled} className={props.isDisabled ? "disabled" : "submit-btn"}>{props.text}</button>
   ) : props.text === "CANCEL" ? (
     <button className='cancel-btn' onClick={props.clickHandler ? props.clickHandler : undefined} >{props.text}</button>
-  ) : props.text === "JOIN EVENT" && (
+  ) : props.text === "JOIN EVENT" ? (
     <button className='join-btn' onClick={props.clickHandler}>{props.text}</button>
+  ) : props.text === "CANCEL PARTICIPATION" && (
+    <button className='cancel-participation-btn' onClick={props.clickHandler ? props.clickHandler : undefined}>{props.text}</button>
   )
   return (
     <>
