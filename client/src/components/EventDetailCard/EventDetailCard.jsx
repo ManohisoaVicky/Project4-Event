@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { addParticipant } from '../../utils/eventService'
 import { format } from 'date-fns'
 
@@ -42,7 +42,9 @@ function EventDetailCard(props) {
         ): (props.event) && (
           <>
           <AboutHost host={props.event.host} />
-          <div>{props.user && props.event && <Button text="JOIN EVENT" clickHandler={joinEvent} >JOIN EVENT</Button>}</div>
+          <div>{props.user && props.event ? <Button text="JOIN EVENT" clickHandler={joinEvent} >JOIN EVENT</Button>
+              : props.event && !props.user && <p className='login-or-signup-message'><Link to="/login">LOG IN</Link> OR <Link to="/signup">SIGN UP</Link> TO JOIN EVENTS</p>  
+        }</div>
           </>
         )}
       </div>

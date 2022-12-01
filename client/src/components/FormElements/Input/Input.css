@@ -96,3 +96,7 @@ select {
     font-size: 15px;
     outline: none;
 }
+
+.search {
+    color: var(--dark-blue);
+}
