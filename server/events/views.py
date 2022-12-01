@@ -78,7 +78,7 @@ class EventDetailUpdateDelete(APIView):
 class AllUserEvents(APIView):
 
     def get(self, request, pk):
-        events = Event.objects.filter(host_id=pk).order_by('-id')
+        events = Event.objects.filter(host_id=pk).order_by('date')
         serializer = EventSerializer(events, many=True)
         return JsonResponse(serializer.data, safe=False)
 
