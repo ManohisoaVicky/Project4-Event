@@ -52,7 +52,9 @@ const deleteEvent = async (eventID) => {
       },
     });
     return res.status(200).json({ message: "Successfully deleted" });
-  } catch {}
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const updateEvent = async (event, eventID) => {
@@ -106,6 +108,22 @@ const getJoinedEvents = async (userID) => {
   }
 };
 
+const cancelEventParticipation = async (eventID) => {
+  try {
+    const token = getToken();
+    let res = await fetch(BASE_URL + "joined/" + eventID + "/", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+        Authorization: "Bearer " + token,
+      },
+    });
+    return res.json({ message: "Successfully cancelled participation" });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export {
   getEvents,
   createEvent,
@@ -115,4 +133,5 @@ export {
   getUserEvent,
   addParticipant,
   getJoinedEvents,
+  cancelEventParticipation,
 };

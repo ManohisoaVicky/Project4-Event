@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import { addParticipant } from '../../utils/eventService'
+import { addParticipant, cancelEventParticipation } from '../../utils/eventService'
 import { format } from 'date-fns'
 
 import AboutHost from '../AboutHost/AboutHost'
@@ -18,7 +18,11 @@ function EventDetailCard(props) {
   const joinEvent = () => {
     addParticipant(props.id)
     navigate(`/profile/${props.user.id}`)
+  }
 
+  const cancelParticipation = () => {
+    cancelEventParticipation(props.event.id)
+    navigate(`/profile/${props.user.id}`)
   }
 
   const joined = () => {
@@ -47,7 +51,7 @@ function EventDetailCard(props) {
           <>
           <AboutHost host={props.event.host} />
           <div>{props.user && props.event && !joined() ? <Button text="JOIN EVENT" clickHandler={joinEvent} >JOIN EVENT</Button>
-              : props.user && props.event && joined()? <Button text="CANCEL PARTICIPATION">CANCEL PARTICIPATION</Button>
+              : props.user && props.event && joined()? <Button text="CANCEL PARTICIPATION" clickHandler={cancelParticipation}>CANCEL PARTICIPATION</Button>
               : props.event && !props.user && <p className='login-or-signup-message'><Link to="/login">LOG IN</Link> OR <Link to="/signup">SIGN UP</Link> TO JOIN EVENTS</p>  
         }</div>
           </>
