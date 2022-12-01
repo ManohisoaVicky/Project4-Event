@@ -82,11 +82,17 @@ class AllUserEvents(APIView):
         serializer = EventSerializer(events, many=True)
         return JsonResponse(serializer.data, safe=False)
 
-class GetJoinedEvents(APIView):
+class JoinedEvents(APIView):
 
     def get(self, request, pk):
         events = Event.objects.all().filter(participant=pk).prefetch_related('participant').order_by('date')
         serializer = PopulatedEventSerializer(events, many=True)
         return JsonResponse(serializer.data, safe=False)
+
+    def delete(self, request, pk):
+        event = Event.objects.get(id=pk)
+        user = request.user.id
+        event.participant.remove(user)
+        return JsonResponse({"message":"You've successfully cancelled your participation in the event"})
 
 
