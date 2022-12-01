@@ -58,6 +58,7 @@ function Tab(props) {
                         name={event.name} 
                         description={event.description}
                         date={event.date}
+                        host={event.host}
                         />
               })
             : 
