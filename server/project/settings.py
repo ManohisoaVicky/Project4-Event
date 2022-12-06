@@ -11,6 +11,12 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from environ import Env
+import os
+import dj_database_url
+
+env = Env()
+env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-wwem=mi+n0h%r(j%=-3y_q#b8s-dy)iv)@sq!w^=zicfw&m*bs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+DEBUG = env.bool("DEBUG", default=False)
+
+SECRET_KEY = os.environ.get("SECRET_KEY")
+
+ALLOWED_HOSTS = [".netlify.app", "localhost", "127.0.0.1", "hostname.fly.dev"]
 
 
 # Application definition
@@ -90,10 +98,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'project4-event',
-    }
+     "default": dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
 
 REST_FRAMEWORK = {

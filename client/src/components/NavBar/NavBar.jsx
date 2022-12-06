@@ -29,7 +29,7 @@ function NavBar({state, setState}) {
     </>
   ): (
     <>
-    <NavLink to="" className="nav-logo">EVENT APP</NavLink>
+    <NavLink to="" className="nav-logo">EVENTECH</NavLink>
     <div className='logged-out-links'>
       <NavLink to="/signup" id="signup-link">SIGN UP</NavLink>
       <NavLink to="/login" id="login-link">LOG IN</NavLink>
