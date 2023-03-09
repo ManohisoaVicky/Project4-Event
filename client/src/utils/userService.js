@@ -5,7 +5,7 @@ import {
   getToken,
 } from "./tokenService";
 
-const BASE_URL = "/api/users/";
+const BASE_URL = "https://eventech-backend.herokuapp.com/api/users/";
 
 function signup(user) {
   return fetch(BASE_URL + "signup/", {

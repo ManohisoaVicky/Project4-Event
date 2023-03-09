@@ -1,6 +1,6 @@
 import { getToken } from "../utils/tokenService";
 
-const BASE_URL = "/api/events/";
+const BASE_URL = "https://eventech-backend.herokuapp.com/api/events/";
 
 const getEvents = async (name) => {
   try {

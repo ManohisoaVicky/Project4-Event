@@ -23,6 +23,8 @@ This project, which was done individually, had a timeframe of 20 days.
 - PostgreSQL
 - TablePlus
 - Insomnia
+- Git
+- GitHub
 - Chrome's Developer Tools
 - Visual Studio Code
 - Excalidraw
@@ -235,3 +237,6 @@ The feature to upload a profile picture is a feature that I wanted to implement 
 
 ### Adding Tags to Events and Filtering by Tags
 Adding tags to an event would be a useful feature. It would also allow me to create a filter functionality to filter events by tags. 
+
+
+backend link: https://git.heroku.com/eventech-backend.git
