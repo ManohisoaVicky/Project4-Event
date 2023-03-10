@@ -7,7 +7,7 @@ Eventech is a tech related event app. Users can view online events. They can als
 
 ## Deployment Link
 You can find the deployed app here:
-
+[Eventech](http://bit.ly/3yq6KxO)
 
 ## Timeframe and Working Team
 This project, which was done individually, had a timeframe of 20 days. 
@@ -239,4 +239,3 @@ The feature to upload a profile picture is a feature that I wanted to implement 
 Adding tags to an event would be a useful feature. It would also allow me to create a filter functionality to filter events by tags. 
 
 
-backend link: https://git.heroku.com/eventech-backend.git
